@@ -12,7 +12,7 @@ CXXFLAGS = -Wall
  
 # all
 all: main.o
-	$(CXX) $^ -o exec $(CXXFLAGS)
+	$(CXX) $^ -o lzw $(CXXFLAGS)
  
 main.o:
  
