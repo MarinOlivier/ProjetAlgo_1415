@@ -11,10 +11,10 @@ CXXFLAGS = -Wall
  
  
 # all
-all: main.o
+all: main.o compression.o decompression.o
 	$(CXX) $^ -o lzw $(CXXFLAGS)
  
-main.o:
+main.o: compression.h decompression.h
  
 %.o: %.cpp
 	$(CXX) -c $< -o $@ $(CXXFLAGS)
