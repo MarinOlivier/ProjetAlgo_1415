@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	cout << "On vas en chier !!" << endl;
+	cout << "On va envoyer du pâté !!" << endl << "Une fois qu'on a fini avec les textes on passe aux images !" << endl;
     return 0;
 }
 
