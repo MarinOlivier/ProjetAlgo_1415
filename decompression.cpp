@@ -8,4 +8,6 @@
 
 #include <iostream>
 
+#include "decompression.h"
+
 using namespace std;

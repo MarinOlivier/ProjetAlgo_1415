@@ -9,6 +9,8 @@
 #include <iostream>
 #include <stdio.h> // gestion de fichiers
 
+#include "compression.h"
+
 using namespace std;
 
 
