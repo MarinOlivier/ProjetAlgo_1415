@@ -21,7 +21,8 @@ typedef struct arbre{
 
 ptarbre creer_arbre();
 ptarbre creer_noeud(char etiq, int code, ptarbre frere, ptarbre fils);
-ptarbre ajout_ligne(char c, ptarbre arbre);
+ptarbre ajout_colonne(ptarbre arbre, char s[]);
+ptarbre ajout(char s[], ptarbre arbre);
 ptarbre init_arbre_ASCII(void);
 
 #endif

@@ -15,7 +15,7 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 	ptarbre arbre = init_arbre_ASCII();
-	for (int i = 0; i < 256; i++)
+	while(arbre->frere != NULL)
 	{
 		cout << arbre->etiq << endl;
 		arbre = arbre->frere;
