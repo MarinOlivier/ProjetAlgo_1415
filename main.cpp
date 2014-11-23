@@ -19,7 +19,8 @@ int main(int argc, const char * argv[])
 	c[0]='a';
 	c[1]='\0';
 	bool a = rechercher(c, arbre);
-
 	cout << a << endl;
+	
+	affichage(arbre);
     return 0;
 }

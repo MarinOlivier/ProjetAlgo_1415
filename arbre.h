@@ -25,5 +25,6 @@ ptarbre ajout_colonne(ptarbre arbre, char s[]);
 ptarbre ajout(char s[], ptarbre arbre);
 ptarbre init_arbre_ASCII(void);
 bool rechercher(char s[], ptarbre arbre);
+void affichage(ptarbre arbre);
 
 #endif
