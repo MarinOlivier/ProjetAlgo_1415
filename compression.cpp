@@ -10,27 +10,37 @@
 #include <stdio.h> // gestion de fichiers
 
 #include "compression.h"
+#include "arbre.h"
 
 using namespace std;
 
+void compress(const char* fentry)
+{
+// w = Nul;
+//    tant que (lecture d'un caractère c) faire
+//        si (w + c existe dans le dictionnaire) alors
+//            w = w + c;
+//        sinon
+//            ajouter w + c au dictionnaire;
+//            écrire le code de w;
+//            w = c;
+//        fin si
+//    fin tant que
+//    écrire le code de w;
 
-/*********************************************
- *               Pseudo code                 *
- *********************************************/
-// 1 compteur ← −1
-// 2 pour a ∈ A faire
-// 3 compteur ← compteur + 1
-// 4 Inserer((D,(−1, a, compteur)))
-// 5 compteur ← compteur + 1
-// 6 Inserer((D,(−1, a, compteur)))
-// 7 p ← −1
-// 8 tantque non fdf(fentr´ee) et a est le prochain caract`ere faire
-// 9 q ← Recherche((D,(p, a)))
-// 10 si q = nil alors
-// 11 ´ecrire codep sur 1 + log(compteur) bits dans fsortie
-// 12 compteur ← compteur + 1
-// 13 Inserer((D,(p, a, compteur)))
-// 14 p ← Recherche((D,(−1, a)))
-// 15 sinon p ← q
-// 16 ´ecrire code(p) sur 1 + log(compteur) bits dans fsortie
-// 17 ´ecrire Recherche((D,(−1, FIN))) sur 1 + log(compteur) bits dans fsortie
+	// FILE* entry = NULL;
+	// entry = fopen(fentry, "r");
+	// if (entry != NULL)
+	// {
+	// 	char* w = NULL;
+	// 	char* c = NULL;
+	// 	while(fgets(c, 1, entry) != EOF)
+	// 	{
+			
+	// 	}
+	// }
+	// else
+	// {
+	// 	cout << "Impossible d'ouvrir le fichier" << endl;
+	// }
+}

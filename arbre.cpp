@@ -30,23 +30,6 @@ ptarbre creer_noeud(char etiq, int code, ptarbre frere, ptarbre fils)
 	return aux;
 }
 
-// ptarbre ajout_ligne(char c, ptarbre arbre)
-// {
-// 	if(arbre->frere == NULL)
-// 	{
-// 		ptarbre nouveau = creer_noeud(c, (int)c, NULL, NULL );
-// 		arbre->frere = nouveau;
-// 		return nouveau;
-// 	}
-// 	else
-// 	{
-// 		ajout_ligne(c, arbre->frere);
-// 	}
-
-// 	return arbre;
-	
-// }
-
 ptarbre ajout_colonne(char s[], ptarbre arbre)
 {
 	if (arbre != NULL) return arbre;
@@ -79,16 +62,21 @@ ptarbre ajout_colonne(char s[], ptarbre arbre)
 
 ptarbre ajout(char s[], ptarbre arbre)
 {
+	cout << "ajout " << s[0] << endl;
 	if(arbre == NULL){
+		cout << "lol" << endl;
 		arbre = ajout_colonne(s, arbre);
 		return arbre;
 	}
 	if(s[0] == arbre->etiq && s[0] != '\0'){
+		cout << "ici" << endl;
 		arbre->fils = ajout(&s[1], arbre->fils);
 	} else {
 		if(s[0] > arbre->etiq){
+			cout << "la" << endl;
 			arbre->frere = ajout(s, arbre->frere);
 		} else if(s[0] < arbre->etiq) {
+			cout << "peut-etre" << endl;
 			ptarbre nouveau = creer_noeud(s[0], (int)s[0], arbre, NULL);
 			ajout_colonne(&s[1], nouveau);
 			return nouveau; 
@@ -101,10 +89,14 @@ ptarbre ajout(char s[], ptarbre arbre)
 
 ptarbre init_arbre_ASCII(void)
 {
-	ptarbre arbre = creer_arbre();
+	char c[2];
+	c[0] = (char)0;
+	c[1] = '\0';
+	cout << "char " << c << " int " << 48 << endl;
+	ptarbre arbre = ajout(c, NULL);
 	ptarbre racine = arbre;
 
-	for (int i = 0; i < 256; i++)
+	for (int i = 1; i < 256; i++)
 	{
 		char c[2];
 		c[0] = (char)i;
@@ -115,4 +107,21 @@ ptarbre init_arbre_ASCII(void)
 
 	return racine;
 
+}
+
+bool rechercher(char s[], ptarbre arbre)
+{
+	if (arbre == NULL)
+		return false;
+	if (s[0] == arbre->etiq)
+	{
+		if (s[0] == '\0')
+			return true;
+		else
+			return rechercher(&s[1], arbre->fils);
+	}
+	else
+	{
+		rechercher(s, arbre->frere);
+	}
 }

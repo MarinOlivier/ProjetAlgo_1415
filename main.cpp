@@ -15,10 +15,11 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 	ptarbre arbre = init_arbre_ASCII();
-	while(arbre->frere != NULL)
-	{
-		cout << arbre->etiq << endl;
-		arbre = arbre->frere;
-	}	
+	char c[2];
+	c[0]='a';
+	c[1]='\0';
+	bool a = rechercher(c, arbre);
+
+	cout << a << endl;
     return 0;
 }
