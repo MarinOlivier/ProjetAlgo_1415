@@ -99,7 +99,7 @@ ptarbre init_arbre_ASCII(void)
 
 }
 
-bool rechercher(char s[], ptarbre arbre)
+bool estPresent(char s[], ptarbre arbre)
 {
 	if (arbre == NULL)
 		return false;
@@ -109,10 +109,10 @@ bool rechercher(char s[], ptarbre arbre)
 		if (s[0] == '\0')
 			return true;
 		else
-			return rechercher(&s[1], arbre->fils);
+			return estPresent(&s[1], arbre->fils);
 	}
 	else
-		return rechercher(s, arbre->frere);
+		return estPresent(s, arbre->frere);
 }
 
 void affichage(ptarbre arbre)
