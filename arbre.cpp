@@ -18,7 +18,7 @@ ptarbre creer_arbre()
 	return arbre;
 }
 
-ptarbre creer_noeud(char etiq, int code, ptarbre frere, ptarbre fils)
+ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 {
 	ptarbre aux;
 	aux = (ptarbre)malloc(sizeof(noeud));
@@ -30,7 +30,7 @@ ptarbre creer_noeud(char etiq, int code, ptarbre frere, ptarbre fils)
 	return aux;
 }
 
-ptarbre ajout_colonne(char s[], ptarbre arbre)
+ptarbre ajout_colonne(unsigned char s[], ptarbre arbre)
 {
 	if (arbre != NULL) return arbre;
 
@@ -61,7 +61,7 @@ ptarbre ajout_colonne(char s[], ptarbre arbre)
 	return arbre;
 }
 
-ptarbre ajout(char s[], ptarbre arbre)
+ptarbre ajout(unsigned char s[], ptarbre arbre)
 {
 	if(arbre == NULL){
 		arbre = ajout_colonne(s, arbre);
@@ -84,14 +84,14 @@ ptarbre ajout(char s[], ptarbre arbre)
 
 ptarbre init_arbre_ASCII(void)
 {
-	char c[1];
-	c[0] = (char)0;
+	unsigned char c[1];
+	c[0] = ( unsigned char)0;
 	ptarbre arbre = ajout(c, NULL);
 	ptarbre racine = arbre;
 
-	for (int i = 1; i < 128; i++)
+	for (int i = 1; i < 256; i++)
 	{
-		c[0] = (char)i;
+		c[0] = (unsigned char)i;
 		ajout(c, arbre);
 	}
 
@@ -99,7 +99,7 @@ ptarbre init_arbre_ASCII(void)
 
 }
 
-bool estPresent(char s[], ptarbre arbre)
+bool estPresent(unsigned char s[], ptarbre arbre)
 {
 	if (arbre == NULL)
 		return false;
