@@ -52,7 +52,7 @@ ptarbre ajout_colonne(unsigned char s[], ptarbre arbre)
 	}
 
 	//Ajout du '\0' à la fin du mot
-	suivant = creer_noeud('\0', 256, NULL, NULL);
+	suivant = creer_noeud((unsigned char)'\0', 256, NULL, NULL);
 	noeud_courant->fils = suivant;
 	noeud_courant->frere = NULL ;
 	noeud_courant = suivant;
