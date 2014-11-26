@@ -14,5 +14,14 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+	ptarbre arbre = init_arbre_ASCII();
+
+	cout << "ini success" << endl;
+
+	affichage(arbre);
+
+	unsigned char c[1];
+	c[0] = 'a';
+	cout << estPresent(c, arbre) << endl;
     return 0;
 }
