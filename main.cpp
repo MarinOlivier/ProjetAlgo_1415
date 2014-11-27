@@ -7,10 +7,15 @@
 //
 
 #include <iostream>
+#include <stdio.h>
+
+#include "string.h"
 
 #include "arbre.h"
 
 using namespace std;
+
+unsigned char mot[100];
 
 int main(int argc, const char * argv[])
 {
@@ -20,8 +25,8 @@ int main(int argc, const char * argv[])
 
 	affichage(arbre);
 
-	unsigned char c[1];
-	c[0] = 'a';
-	cout << estPresent(c, arbre) << endl;
+	strcat((char*)mot, "b");
+
+	cout << estPresent(mot, arbre) << endl;
     return 0;
 }
