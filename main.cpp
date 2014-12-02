@@ -8,25 +8,33 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include "compression.h"
 
 #include "string.h"
-
+#include "in_out.h"
 #include "arbre.h"
 
 using namespace std;
 
 unsigned char mot[100];
 
+void testRecherche(ptarbre arbre){
+    strcat((char*)mot, "b");
+	cout << estPresent(mot, arbre) << endl;
+}
+
+void testLecture(){
+    reader("test.rtf");
+}
+
 int main(int argc, const char * argv[])
 {
-	ptarbre arbre = init_arbre_ASCII();
+	//ptarbre arbre = init_arbre_ASCII();
 
-	cout << "ini success" << endl;
-
-	affichage(arbre);
-
-	strcat((char*)mot, "b");
-
-	cout << estPresent(mot, arbre) << endl;
+	cout << "init success" << endl;
+	//affichage(arbre);
+    //testRecherche(arbre);
+	//testLecture();
     return 0;
 }

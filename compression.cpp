@@ -8,13 +8,27 @@
 
 #include <iostream>
 #include <stdio.h> // gestion de fichiers
+#include "string.h"
 
 #include "compression.h"
 #include "arbre.h"
 
 using namespace std;
 
-void compress(const char* fentry, const char* foutput)
+
+char w[10];
+
+
+//unsigned char* strcat_p(char* dest, const char* src);
+
+unsigned char * strcat_p(char * dest, const char * src){
+    unsigned char * aux;
+    char * lol = strcat(dest, src);
+    aux = (unsigned char *) lol;
+    return aux;
+}
+
+void compress(const char* fentry, const char* foutput, ptarbre arbre)
 {
 // w = Nul;
 //    tant que (lecture d'un caractère c) faire
@@ -28,7 +42,7 @@ void compress(const char* fentry, const char* foutput)
 //    fin tant que
 //    écrire le code de w;
 
-
+    
 
 // 	FILE* entry = NULL;
 // 	entry = fopen(fentry, "r");
@@ -38,17 +52,17 @@ void compress(const char* fentry, const char* foutput)
 // 		output = fopen(foutput, "w");
 // 		if (output != NULL)
 // 		{
-// 			char w[100];
+// 			
 // 			char* c = NULL;
 // 			while(fgets(c, sizeof(char), entry) != NULL)
 // 			{
-// 				if(estPresent(strcat(w,c), arbre))
+// 				if(estPresent(strcat_p(w,c), arbre))
 // 				{
-// 					w = strcat(w,c);
+// 					w = strcat_p(w,c);
 // 				}
 // 				else
 // 				{
-// 					ajout(strcat(w,c), arbre);
+// 					ajout(strcat_p(w,c), arbre);
 // 					char* code = (char*)((int)w); // <<-------- Trouver un autre moyen de récupérer le code
 // 					fputs(code, output);
 // 					w = c;
