@@ -18,9 +18,6 @@ using namespace std;
 
 char w[10];
 
-
-//unsigned char* strcat_p(char* dest, const char* src);
-
 unsigned char * strcat_p(char * dest, const char * src){
     unsigned char * aux;
     char * lol = strcat(dest, src);
