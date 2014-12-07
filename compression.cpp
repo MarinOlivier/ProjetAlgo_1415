@@ -16,7 +16,8 @@
 using namespace std;
 
 
-char w[10];
+unsigned char w[10] = {0};
+//unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
 
 unsigned char * strcat_p(char * dest, const char * src){
     unsigned char * aux;
@@ -38,7 +39,27 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
 //        fin si
 //    fin tant que
 //    écrire le code de w;
-
+    int j = 0;
+    char text[] =   {'a','b','c','a','a','b','\0'};
+    char c = text[0];
+    while (c != '\0') {
+        short i = 0;
+        while (w[i] != '\0') {
+            i++;
+        }
+        if (estPresent(w, arbre))
+            w[i] = c;
+        else {
+            ajout(w, arbre);
+            //writer(w);
+            w[0] = c;
+        }
+        cout << c;
+        c = text[j++];
+        unsigned char aux[3] = {'a','b','\0'};
+        cout << estPresent(aux, arbre);
+        // writer(w);
+    }
     
 
 // 	FILE* entry = NULL;

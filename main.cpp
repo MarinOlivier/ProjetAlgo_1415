@@ -30,11 +30,13 @@ void testLecture(){
 
 int main(int argc, const char * argv[])
 {
-	//ptarbre arbre = init_arbre_ASCII();
+    const char * truc;
+	ptarbre arbre = init_arbre_ASCII();
 
 	cout << "init success" << endl;
-	//affichage(arbre);
     //testRecherche(arbre);
 	//testLecture();
+    compress(truc, truc,arbre);
+    //affichage(arbre);
     return 0;
 }

@@ -126,9 +126,9 @@ void affichage(ptarbre arbre)
 	else
 	{
 		if (arbre->etiq == '\0')
-			cout << "\\0 "<< arbre->code << endl;
+			cout << "\\0 " << endl;
 		else
-			cout << arbre->etiq;
+			cout << arbre->etiq <<'\t'<< arbre->code;
 		affichage(arbre->fils);
 		affichage(arbre->frere);
 	}

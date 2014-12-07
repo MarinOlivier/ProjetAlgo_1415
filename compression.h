@@ -10,5 +10,8 @@
 #ifndef projet_algo_compression_h
 #define projet_algo_compression_h
 
+#include "arbre.h"
+
+void compress(const char* fentry, const char* foutput, ptarbre arbre);
 
 #endif
