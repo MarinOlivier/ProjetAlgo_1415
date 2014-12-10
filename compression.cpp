@@ -19,13 +19,6 @@ using namespace std;
 unsigned char w[10] = {0};
 //unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
 
-unsigned char * strcat_p(char * dest, const char * src){
-    unsigned char * aux;
-    char * lol = strcat(dest, src);
-    aux = (unsigned char *) lol;
-    return aux;
-}
-
 void compress(const char* fentry, const char* foutput, ptarbre arbre)
 {
 // w = Nul;
@@ -47,7 +40,12 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
         while (w[i] != '\0') {
             i++;
         }
+        w[i+1] = '\0';
+        cout << "w = " << w << " i = " << i << endl;
         w[i] = c;
+
+        cout << "w = " << w << endl;
+        cout << estPresent(w, arbre) << endl;
         if (estPresent(w, arbre))
             w[i] = c;
         else {

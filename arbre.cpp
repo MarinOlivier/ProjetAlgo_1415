@@ -69,7 +69,7 @@ ptarbre init_arbre_ASCII(void)
 	ptarbre racine = creer_noeud((unsigned char)'\0', 0, NULL, NULL);
 	ajout(racine, c);
 
-	for (int i = 5; i < 256; i++) {
+	for (int i = 1; i < 256; i++) {
 		c[0] = (unsigned char)i;
 		c[1] = '\0';
 		ajout(racine, c);
@@ -81,18 +81,38 @@ ptarbre init_arbre_ASCII(void)
 
 bool estPresent(unsigned char s[], ptarbre arbre)
 {
-	if (arbre == NULL)
+	// cout << "dans estPresent " << endl;
+	if (arbre == NULL && arbre->frere == NULL)
+	{	
+		cout << "lol" << endl;
 		return false;
+	}
+
+	cout << "recherche de ";
 
 	if (s[0] == arbre->etiq)
 	{
 		if (s[0] == '\0')
 			return true;
 		else
+		{
+			cout << s[1] << " sur fils " << endl;
+			cout << arbre->fils << endl;
+			/*********************************
+				PB : C'est parce que arbre->fils = 0x0
+				Donc y'a un pb...
+			*/
 			return estPresent(&s[1], arbre->fils);
+		}
+			
 	}
 	else
-		return estPresent(s, arbre->frere);
+		{
+			cout << s[0] << " sur frere" << endl;
+			// cout << s << endl;
+			return estPresent(s, arbre->frere);
+		}
+		
 }
 
 void affichage(ptarbre arbre)

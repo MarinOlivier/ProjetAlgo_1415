@@ -36,6 +36,10 @@ int main(int argc, const char * argv[])
 	cout << "init success" << endl;
     //testRecherche(arbre);
 	//testLecture();
+
+    unsigned char s[2] = {'a', '\0'};
+    cout << estPresent(s, arbre) << endl; 
+
     compress(truc, truc,arbre);
     affichage(arbre);
     //affichage(arbre);
