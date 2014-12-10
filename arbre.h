@@ -21,8 +21,7 @@ typedef struct arbre{
 
 ptarbre creer_arbre();
 ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils);
-ptarbre ajout_colonne(ptarbre arbre, unsigned char s[]);
-ptarbre ajout(unsigned char s[], ptarbre arbre);
+void ajout(ptarbre arbre, unsigned char s[]);
 ptarbre init_arbre_ASCII(void);
 bool estPresent(unsigned char s[], ptarbre arbre);
 void affichage(ptarbre arbre);

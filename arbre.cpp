@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <stdlib.h>
 #include <string.h>
 #include "arbre.h"
 
@@ -30,71 +31,48 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 	return aux;
 }
 
-ptarbre ajout_colonne(unsigned char s[], ptarbre arbre)
+void ajout(ptarbre arbre, unsigned char c[])
 {
-	if (arbre != NULL) return arbre;
-
-	int i = 0;
-	ptarbre noeud_courant, suivant ;
-	//cas i = 0
-	noeud_courant = creer_noeud(s[i], (int)s[i], NULL, NULL);
-	arbre = noeud_courant ;
-	i++ ;
-	// i : premiere lettre non traitee
-	// noeux_courant : dernier maillon cree
-	while(s[i] != '\0')
-	{	
-		suivant = creer_noeud(s[i], (int)s[i], NULL, NULL);
-		noeud_courant->fils = suivant;
-		noeud_courant->frere = NULL ;
-		noeud_courant = suivant;
-		i++;
+	if (arbre->etiq != c[0] && arbre->frere != NULL && arbre->frere->code < (int)c[0])
+		ajout(arbre->frere, c);
+	if (arbre->frere == NULL)
+	{
+		ptarbre aux = creer_noeud('\0', 0, NULL, NULL);
+		ptarbre aux_bis = creer_noeud(c[0], (int)c[0], aux, NULL);
+		arbre->frere = aux_bis;
 	}
-
-	//Ajout du '\0' à la fin du mot
-	suivant = creer_noeud((unsigned char)'\0', 256, NULL, NULL);
-	noeud_courant->fils = suivant;
-	noeud_courant->frere = NULL ;
-	noeud_courant = suivant;
-
-
-	return arbre;
-}
-
-ptarbre ajout(unsigned char s[], ptarbre arbre)
-{
-	if(arbre == NULL){
-		arbre = ajout_colonne(s, arbre);
-		return arbre;
+	if (arbre->frere->code > (int)c[0])
+	{
+		ptarbre aux = arbre->frere;
+		ptarbre aux_bis = creer_noeud('\0', 0, NULL, NULL);
+		ptarbre aux_sec = creer_noeud(c[0], (int)c[0], aux_bis, aux);
+		arbre->frere = aux_sec;
 	}
-	if(s[0] == arbre->etiq && s[0] != '\0'){
-		arbre->fils = ajout(&s[1], arbre->fils);
-	} else {
-		if(s[0] > arbre->etiq){
-			arbre->frere = ajout(s, arbre->frere);
-		} else if(s[0] < arbre->etiq) {
-			ptarbre nouveau = creer_noeud(s[0], (int)s[0], arbre, NULL);
-			ajout_colonne(&s[1], nouveau);
-			return nouveau; 
-		}
+	if (arbre->etiq == c[0] && c[1] != '\0')
+	{
+		cout << &c << endl;
+		c++;
+		cout << &c << endl;
+		ajout(arbre->fils, c);
 	}
-	return arbre;
 }
 
 
 ptarbre init_arbre_ASCII(void)
 {
 	unsigned char c[2];
-	c[0] = ( unsigned char)0;
+	c[0] = (unsigned char)'\0';
 	c[1] = '\0';
 
+	cout << c << endl;
+
 	ptarbre racine = creer_noeud((unsigned char)'\0', 0, NULL, NULL);
-	ajout(c, racine);
+	ajout(racine, c);
 
 	for (int i = 5; i < 256; i++) {
 		c[0] = (unsigned char)i;
 		c[1] = '\0';
-		ajout(c, racine);
+		ajout(racine, c);
 	}
 
 	return racine;

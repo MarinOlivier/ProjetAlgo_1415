@@ -24,9 +24,9 @@ void testRecherche(ptarbre arbre){
 	cout << estPresent(mot, arbre) << endl;
 }
 
-void testLecture(){
-    reader("test.rtf");
-}
+// void testLecture(){
+//     reader("test.rtf");
+// }
 
 int main(int argc, const char * argv[])
 {
@@ -37,6 +37,7 @@ int main(int argc, const char * argv[])
     //testRecherche(arbre);
 	//testLecture();
     compress(truc, truc,arbre);
+    affichage(arbre);
     //affichage(arbre);
     return 0;
 }

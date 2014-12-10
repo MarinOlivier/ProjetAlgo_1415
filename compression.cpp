@@ -47,20 +47,28 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
         while (w[i] != '\0') {
             i++;
         }
+        w[i] = c;
         if (estPresent(w, arbre))
             w[i] = c;
         else {
-            ajout(w, arbre);
+            cout << w << endl;
+            ajout(arbre, w);
             //writer(w);
+            memset(w, 0, sizeof(w));
             w[0] = c;
         }
-        cout << c;
-        c = text[j++];
-        unsigned char aux[3] = {'a','b','\0'};
-        cout << estPresent(aux, arbre);
+        //cout << c;
+        c = text[++j];
+        unsigned char s[3] = {'a', 'a', '\0'};
+        //cout << estPresent(s, arbre) << endl;
+
+        //cout << w;
         // writer(w);
     }
+
+    // affichage(arbre);
     
+    // cout << endl;
 
 // 	FILE* entry = NULL;
 // 	entry = fopen(fentry, "r");
