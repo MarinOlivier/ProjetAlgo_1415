@@ -38,14 +38,14 @@ void ajout(ptarbre arbre, unsigned char c[])
 	if (arbre->frere == NULL)
 	{
 		ptarbre aux = creer_noeud('\0', 0, NULL, NULL);
-		ptarbre aux_bis = creer_noeud(c[0], (int)c[0], aux, NULL);
+		ptarbre aux_bis = creer_noeud(c[0], (int)c[0], NULL, aux);
 		arbre->frere = aux_bis;
 	}
 	if (arbre->frere->code > (int)c[0])
 	{
 		ptarbre aux = arbre->frere;
 		ptarbre aux_bis = creer_noeud('\0', 0, NULL, NULL);
-		ptarbre aux_sec = creer_noeud(c[0], (int)c[0], aux_bis, aux);
+		ptarbre aux_sec = creer_noeud(c[0], (int)c[0], aux, aux_bis);
 		arbre->frere = aux_sec;
 	}
 	if (arbre->etiq == c[0] && c[1] != '\0')
@@ -92,12 +92,13 @@ bool estPresent(unsigned char s[], ptarbre arbre)
 
 	if (s[0] == arbre->etiq)
 	{
+		cout << "trouvé" << endl;
 		if (s[0] == '\0')
 			return true;
 		else
 		{
 			cout << s[1] << " sur fils " << endl;
-			cout << arbre->fils << endl;
+			// cout << arbre->fils << endl;
 			/*********************************
 				PB : C'est parce que arbre->fils = 0x0
 				Donc y'a un pb...

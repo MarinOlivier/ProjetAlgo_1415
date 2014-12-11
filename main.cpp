@@ -37,11 +37,11 @@ int main(int argc, const char * argv[])
     //testRecherche(arbre);
 	//testLecture();
 
-    unsigned char s[2] = {'a', '\0'};
+    unsigned char s[2] = {'b', '\0'};
     cout << estPresent(s, arbre) << endl; 
 
-    compress(truc, truc,arbre);
-    affichage(arbre);
+    // compress(truc, truc,arbre);
+    // affichage(arbre);
     //affichage(arbre);
     return 0;
 }
