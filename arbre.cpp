@@ -81,37 +81,22 @@ ptarbre init_arbre_ASCII(void)
 
 bool estPresent(unsigned char s[], ptarbre arbre)
 {
-	// cout << "dans estPresent " << endl;
 	if (arbre == NULL && arbre->frere == NULL)
-	{	
-		cout << "lol" << endl;
 		return false;
-	}
-
-	cout << "recherche de ";
 
 	if (s[0] == arbre->etiq)
 	{
-		cout << "trouvé" << endl;
 		if (s[0] == '\0')
 			return true;
 		else
-		{
-			cout << s[1] << " sur fils " << endl;
-			// cout << arbre->fils << endl;
-			/*********************************
-				PB : C'est parce que arbre->fils = 0x0
-				Donc y'a un pb...
-			*/
 			return estPresent(&s[1], arbre->fils);
-		}
-			
 	}
 	else
 		{
-			cout << s[0] << " sur frere" << endl;
-			// cout << s << endl;
-			return estPresent(s, arbre->frere);
+			if (arbre->frere != NULL)
+				return estPresent(s, arbre->frere);
+			else
+				return false;
 		}
 		
 }

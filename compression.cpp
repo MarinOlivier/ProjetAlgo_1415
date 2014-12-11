@@ -40,16 +40,15 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
         while (w[i] != '\0') {
             i++;
         }
-        w[i+1] = '\0';
         cout << "w = " << w << " i = " << i << endl;
         w[i] = c;
 
         cout << "w = " << w << endl;
-        cout << estPresent(w, arbre) << endl;
+        cout << "dans le dico ? " << estPresent(w, arbre) << endl;
         if (estPresent(w, arbre))
             w[i] = c;
         else {
-            cout << w << endl;
+            cout << "ajout de " << w << endl;
             ajout(arbre, w);
             //writer(w);
             memset(w, 0, sizeof(w));
