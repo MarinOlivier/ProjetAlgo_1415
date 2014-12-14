@@ -33,38 +33,26 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 
 void ajout(ptarbre arbre, unsigned char c[])
 {
-	cout << "Dans ajout " << endl;
-	if (arbre->etiq != c[0] && arbre->frere != NULL && arbre->frere->code < (int)c[0])
-	{
-		cout << "Verif dans frere " << endl;
+	if (arbre->etiq != c[0] && arbre->frere != NULL && arbre->frere->code <= (int)c[0])
 		ajout(arbre->frere, c);
-	}
+
 	if (arbre->frere == NULL)
 	{
-		cout << "cond 1" << endl;
 		ptarbre aux = creer_noeud('\0', 0, NULL, NULL);
 		ptarbre aux_bis = creer_noeud(c[0], (int)c[0], NULL, aux);
 		arbre->frere = aux_bis;
 	}
 	if (arbre->frere->code > (int)c[0])
 	{
-		cout << "cond 2" << endl;
 		ptarbre aux = arbre->frere;
 		ptarbre aux_bis = creer_noeud('\0', 0, NULL, NULL);
 		ptarbre aux_sec = creer_noeud(c[0], (int)c[0], aux, aux_bis);
 		arbre->frere = aux_sec;
 	}
-	if (arbre->etiq == c[0])// && c[1] != '\0')
+	if (arbre->etiq == c[0] && c[1] != '\0')
 	{
-		cout << "cond 3" << endl;
-		cout << arbre->fils << endl;
-		if (c[1] != '\0')
-		{
-			cout << &c << endl;
-			c++;
-			cout << &c << endl;
-			ajout(arbre->fils, c);
-		}		
+		c++;
+		ajout(arbre->fils, c);
 	}
 }
 

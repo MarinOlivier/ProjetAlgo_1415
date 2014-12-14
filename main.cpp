@@ -41,7 +41,6 @@ int main(int argc, const char * argv[])
     // cout << estPresent(s, arbre) << endl; 
 
     compress(truc, truc,arbre);
-    // affichage(arbre);
     //affichage(arbre);
     return 0;
 }
