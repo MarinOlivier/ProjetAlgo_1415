@@ -9,11 +9,14 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctime>
+#include <chrono>
 #include "compression.h"
 
 #include "string.h"
 #include "in_out.h"
 #include "arbre.h"
+#include "stats.h"
 
 using namespace std;
 
@@ -30,6 +33,12 @@ void testRecherche(ptarbre arbre){
 
 int main(int argc, const char * argv[])
 {
+    
+    typedef std::chrono::high_resolution_clock Clock;
+    typedef std::chrono::milliseconds milliseconds;
+    Clock::time_point t0 = Clock::now();
+    
+    
     const char * truc;
 	ptarbre arbre = init_arbre_ASCII();
 
@@ -41,6 +50,22 @@ int main(int argc, const char * argv[])
     // cout << estPresent(s, arbre) << endl; 
 
     compress(truc, truc,arbre);
+    //compress(truc, truc, arbre);
     //affichage(arbre);
+    cout << "Le dernier code : " << showCode() << endl;
+    char fileName[] = "/Users/alex/developper/pa1415/test.txt";
+    //cout << "Taille de fichier : " << fileSize(fileName) << " octets" << endl;
+    compareSize(truc, truc);
+    
+    // Boucle lol pour voir le temps d'exécution du programme
+//    short k = 0;
+//    for (int i = 0; i < 10000; i++)
+//        for (int j = 0; j < 10000; j++)
+//            k++;
+    
+    Clock::time_point t1 = Clock::now();
+    milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
+    cout << "Temps d'exécution du programme : " << ms.count() << "ms\n";
+    
     return 0;
 }

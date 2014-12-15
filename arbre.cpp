@@ -13,6 +13,8 @@
 
 using namespace std;
 
+int codeFinal = 0;
+
 ptarbre creer_arbre()
 {
 	ptarbre arbre = (ptarbre)malloc(sizeof(noeud));
@@ -27,6 +29,8 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 	aux->code = code;
 	aux->frere = frere;
 	aux->fils = fils;
+	if(code != 0)
+		codeFinal++;
 
 	return aux;
 }
@@ -117,3 +121,6 @@ void affichage(ptarbre arbre)
 	}
 }
 
+int showCode(void){
+	return codeFinal;
+}

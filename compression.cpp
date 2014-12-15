@@ -33,7 +33,7 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
 //    fin tant que
 //    écrire le code de w;
     int j = 0;
-    char text[] =   {'a','b','c','a','a','b','\0'};
+    char text[] = {'a','b','c','a','a','b','a','b','c','a','\0'};
     char c = text[0];
     while (c != '\0') {
         short i = 0;

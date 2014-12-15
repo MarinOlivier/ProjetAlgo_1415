@@ -25,5 +25,6 @@ void ajout(ptarbre arbre, unsigned char s[]);
 ptarbre init_arbre_ASCII(void);
 bool estPresent(unsigned char s[], ptarbre arbre);
 void affichage(ptarbre arbre);
+int showCode(void);
 
 #endif
