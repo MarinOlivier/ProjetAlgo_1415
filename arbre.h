@@ -23,7 +23,7 @@ ptarbre creer_arbre();
 ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils);
 void ajout(ptarbre arbre, unsigned char s[]);
 ptarbre init_arbre_ASCII(void);
-bool estPresent(unsigned char s[], ptarbre arbre);
+int getCode(unsigned char s[], ptarbre arbre);
 void affichage(ptarbre arbre);
 int showCode(void);
 

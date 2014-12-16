@@ -12,6 +12,7 @@
 
 #include "compression.h"
 #include "arbre.h"
+#include "in_out.h"
 
 using namespace std;
 
@@ -55,12 +56,15 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
         w[i] = c;
 
         cout << "w = " << w << endl;
-        cout << "dans le dico ? " << estPresent(w, arbre) << endl;
-        if (estPresent(w, arbre))
+        cout << "dans le dico ? " << getCode(w, arbre) << endl;
+        if (getCode(w, arbre) > 0)
             w[i] = c;
         else {
             cout << "ajout de " << w << endl;
             ajout(arbre, w);
+            int codeToWrite = getCode(w, arbre);
+            cout << "ecriture : " << codeToWrite << endl;
+            writer(codeToWrite, foutput);
             memset(w, 0, sizeof(w));
             w[0] = c;
         }

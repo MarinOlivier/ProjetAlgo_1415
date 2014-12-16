@@ -7,7 +7,10 @@
 //
 #include <iostream>
 #include <stdio.h>
+#include "string.h"
+
 #include "in_out.h"
+
 using namespace std;
 
 char reader(char * uncomp_file){
@@ -23,6 +26,17 @@ char reader(char * uncomp_file){
     return current_char;
 }
 
-void writer(){
-    
+void writer(int code, const char* foutput){
+    FILE* output = NULL;
+    output = fopen(foutput, "a+");
+
+    if (output == NULL) {
+        cout << "Error, can't write file !" << endl;
+        return;
+    }
+
+    const char * str = (const char *)code;
+
+    fputs(str, output);
+    fclose(output);
 }

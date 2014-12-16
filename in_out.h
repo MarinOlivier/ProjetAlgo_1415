@@ -9,9 +9,9 @@
 #ifndef __pa1415__in_out__
 #define __pa1415__in_out__
 
-#include <iostream>
-
-#endif /* defined(__pa1415__in_out__) */
+#include "arbre.h"
 
 char reader(char *);
-void writer(void);
+void writer(int code, const char* foutput);
+
+#endif

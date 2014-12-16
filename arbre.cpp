@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int codeFinal = 1;
+int codeFinal = 0;
 
 ptarbre creer_arbre()
 {
@@ -29,12 +29,7 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 	aux->code = code;
 	aux->frere = frere;
 	aux->fils = fils;
-	if(code != 0){
-        if (code == 256) {
-            codeFinal = 260;
-        }
-		codeFinal++;
-    }
+	
 	return aux;
 }
 
@@ -45,16 +40,28 @@ void ajout(ptarbre arbre, unsigned char c[])
 
 	if (arbre->frere == NULL)
 	{
-		ptarbre aux = creer_noeud('\0', 0, NULL, NULL);
+		ptarbre aux = creer_noeud('\0', codeFinal, NULL, NULL);
 		ptarbre aux_bis = creer_noeud(c[0], codeFinal, NULL, aux);
 		arbre->frere = aux_bis;
+		if(codeFinal != 0){
+	        if (codeFinal == 256) {
+	            codeFinal = 260;
+        }
+		codeFinal++;
+    }
 	}
 	if (arbre->frere->code > (int)c[0])
 	{
 		ptarbre aux = arbre->frere;
-		ptarbre aux_bis = creer_noeud('\0', 0, NULL, NULL);
+		ptarbre aux_bis = creer_noeud('\0', codeFinal, NULL, NULL);
 		ptarbre aux_sec = creer_noeud(c[0], codeFinal, aux, aux_bis);
 		arbre->frere = aux_sec;
+		if(codeFinal != 0){
+	        if (codeFinal == 256) {
+	            codeFinal = 260;
+        }
+		codeFinal++;
+    }
 	}
 	if (arbre->etiq == c[0] && c[1] != '\0')
 	{
@@ -82,24 +89,24 @@ ptarbre init_arbre_ASCII(void)
 	return racine;
 }
 
-bool estPresent(unsigned char s[], ptarbre arbre)
+int getCode(unsigned char s[], ptarbre arbre)
 {
 	if (arbre == NULL && arbre->frere == NULL)
-		return false;
+		return -1;
 
 	if (s[0] == arbre->etiq)
 	{
 		if (s[0] == '\0')
-			return true;
+			return arbre->code;
 		else
-			return estPresent(&s[1], arbre->fils);
+			return getCode(&s[1], arbre->fils);
 	}
 	else
 		{
 			if (arbre->frere != NULL)
-				return estPresent(s, arbre->frere);
+				return getCode(s, arbre->frere);
 			else
-				return false;
+				return -1;
 		}
 		
 }
@@ -113,7 +120,7 @@ void affichage(ptarbre arbre)
 	else
 	{
 		if (arbre->etiq == '\0')
-			cout << "\\0 " << endl;
+			cout << "\\0 " << arbre->code << endl;
 		else
 			cout << arbre->etiq <<'\t'<< arbre->code;
 		affichage(arbre->fils);

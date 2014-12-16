@@ -24,7 +24,7 @@ unsigned char mot[100];
 
 void testRecherche(ptarbre arbre){
     strcat((char*)mot, "b");
-	cout << estPresent(mot, arbre) << endl;
+	cout << getCode(mot, arbre) << endl;
 }
 
 // void testLecture(){
@@ -47,11 +47,12 @@ int main(int argc, const char * argv[])
 	//testLecture();
 
     // unsigned char s[2] = {'b', '\0'};
-    //affichage(arbre);
+    // affichage(arbre);
     cout << "Le dernier code : " << showCode() << endl;
-    char fileName[] = "/Users/alex/developper/pa1415/test.txt";
-    char out[] = "/Users/alex/developper/pa1415/out.txt";
+    char fileName[] = "test.txt";
+    char out[] = "out.txt";
     compress(fileName, out, arbre);
+    
     //cout << "Taille de fichier : " << fileSize(fileName) << " octets" << endl;
     //compareSize(truc, truc);
     
