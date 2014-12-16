@@ -19,7 +19,7 @@ using namespace std;
 double fileSize(const char * fileName){
     FILE * pFile;
     long lSize;
-    char * buffer;
+    //char * buffer;
     //size_t result; // <-- inutile pour le moment
 
     pFile = fopen (fileName, "rb");
@@ -38,8 +38,8 @@ double fileSize(const char * fileName){
 
 //Compare la taille des fichiers et renvoie le pourcentage de compression
 void compareSize(const char * before, const char * after){
-    double fileSize1 = fileSize("/Users/alex/developper/pa1415/testa.txt");
-    double fileSize2 = fileSize("/Users/alex/developper/pa1415/testb.txt");
-    cout << fileSize1 << ", " << fileSize2 << endl;
-    cout << fileSize2/fileSize1 * 100 << endl;
+    double fileSize1 = fileSize(before);
+    double fileSize2 = fileSize(after);
+    //cout << fileSize1 << ", " << fileSize2 << endl;
+    //cout << fileSize2/fileSize1 * 100 << endl;
 }

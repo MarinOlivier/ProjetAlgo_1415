@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int codeFinal = 0;
+int codeFinal = 1;
 
 ptarbre creer_arbre()
 {
@@ -29,9 +29,12 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 	aux->code = code;
 	aux->frere = frere;
 	aux->fils = fils;
-	if(code != 0)
+	if(code != 0){
+        if (code == 256) {
+            codeFinal = 260;
+        }
 		codeFinal++;
-
+    }
 	return aux;
 }
 
@@ -43,14 +46,14 @@ void ajout(ptarbre arbre, unsigned char c[])
 	if (arbre->frere == NULL)
 	{
 		ptarbre aux = creer_noeud('\0', 0, NULL, NULL);
-		ptarbre aux_bis = creer_noeud(c[0], (int)c[0], NULL, aux);
+		ptarbre aux_bis = creer_noeud(c[0], codeFinal, NULL, aux);
 		arbre->frere = aux_bis;
 	}
 	if (arbre->frere->code > (int)c[0])
 	{
 		ptarbre aux = arbre->frere;
 		ptarbre aux_bis = creer_noeud('\0', 0, NULL, NULL);
-		ptarbre aux_sec = creer_noeud(c[0], (int)c[0], aux, aux_bis);
+		ptarbre aux_sec = creer_noeud(c[0], codeFinal, aux, aux_bis);
 		arbre->frere = aux_sec;
 	}
 	if (arbre->etiq == c[0] && c[1] != '\0')
@@ -67,8 +70,6 @@ ptarbre init_arbre_ASCII(void)
 	c[0] = (unsigned char)'\0';
 	c[1] = '\0';
 
-	cout << c << endl;
-
 	ptarbre racine = creer_noeud((unsigned char)'\0', 0, NULL, NULL);
 	ajout(racine, c);
 
@@ -79,7 +80,6 @@ ptarbre init_arbre_ASCII(void)
 	}
 
 	return racine;
-
 }
 
 bool estPresent(unsigned char s[], ptarbre arbre)

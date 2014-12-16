@@ -32,11 +32,22 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
 //        fin si
 //    fin tant que
 //    écrire le code de w;
-    int j = 0;
-    char text[] = {'a','b','c','a','a','b','a','b','c','a','\0'};
-    char c = text[0];
-    while (c != '\0') {
+    
+    FILE* entry = NULL;
+    entry = fopen("/Users/alex/developper/pa1415/testa.txt", "r");
+    unsigned char c;
+    int buffer = 0;
+
+    if (entry == NULL) {
+        cout << "Error, can't read file !" << endl;
+        return;
+    }
+
+    buffer = fgetc(entry);
+    while(buffer != EOF){        
         short i = 0;
+
+        c = buffer;
         while (w[i] != '\0') {
             i++;
         }
@@ -50,57 +61,13 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
         else {
             cout << "ajout de " << w << endl;
             ajout(arbre, w);
-            //writer(w);
             memset(w, 0, sizeof(w));
             w[0] = c;
         }
-        //cout << c;
-        c = text[++j];
-        unsigned char s[3] = {'a', 'a', '\0'};
-        //cout << estPresent(s, arbre) << endl;
-
-        //cout << w;
-        // writer(w);
+        buffer = fgetc(entry);
     }
 
-    // affichage(arbre);
-    
-    // cout << endl;
-
-// 	FILE* entry = NULL;
-// 	entry = fopen(fentry, "r");
-// 	if (entry != NULL)
-// 	{
-// 		FILE* output = NULL;
-// 		output = fopen(foutput, "w");
-// 		if (output != NULL)
-// 		{
-// 			
-// 			char* c = NULL;
-// 			while(fgets(c, sizeof(char), entry) != NULL)
-// 			{
-// 				if(estPresent(strcat_p(w,c), arbre))
-// 				{
-// 					w = strcat_p(w,c);
-// 				}
-// 				else
-// 				{
-// 					ajout(strcat_p(w,c), arbre);
-// 					char* code = (char*)((int)w); // <<-------- Trouver un autre moyen de récupérer le code
-// 					fputs(code, output);
-// 					w = c;
-// 				}
-// 			}
-// 			char* code = (char*)((int)w); // <<----------- Trouver un autre moyen de récupérer le code
-// 			fputs(code, output);
-// 		}
-// 		else
-// 		{
-// 			cout << "Impossible d'ouvrir le fichier de sortie" << endl;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		cout << "Impossible d'ouvrir le fichier d'entré" << endl;
-// 	}
+    fclose(entry);
 }
+
+

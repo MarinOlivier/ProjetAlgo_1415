@@ -33,7 +33,7 @@ void testRecherche(ptarbre arbre){
 
 int main(int argc, const char * argv[])
 {
-    
+    // Mise en place du chrono pour déterminer le temps d'execution
     typedef std::chrono::high_resolution_clock Clock;
     typedef std::chrono::milliseconds milliseconds;
     Clock::time_point t0 = Clock::now();
@@ -47,21 +47,19 @@ int main(int argc, const char * argv[])
 	//testLecture();
 
     // unsigned char s[2] = {'b', '\0'};
-    // cout << estPresent(s, arbre) << endl; 
 
-    compress(truc, truc,arbre);
-    //compress(truc, truc, arbre);
+    compress(truc, truc, arbre);
     //affichage(arbre);
     cout << "Le dernier code : " << showCode() << endl;
     char fileName[] = "/Users/alex/developper/pa1415/test.txt";
     //cout << "Taille de fichier : " << fileSize(fileName) << " octets" << endl;
-    compareSize(truc, truc);
+    //compareSize(truc, truc);
     
-    // Boucle lol pour voir le temps d'exécution du programme
-//    short k = 0;
-//    for (int i = 0; i < 10000; i++)
-//        for (int j = 0; j < 10000; j++)
-//            k++;
+   // Boucle lol pour voir le temps d'exécution du programme
+   short k = 0;
+   for (int i = 0; i < 10000; i++)
+       for (int j = 0; j < 10000; j++)
+           k++;
     
     Clock::time_point t1 = Clock::now();
     milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
