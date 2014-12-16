@@ -22,7 +22,7 @@ main.o: compression.h decompression.h arbre.h
  
 # clean
 clean:
-	rm -rf *.o
+	rm *.o
  
 # mrproper
 #mrproper: clean

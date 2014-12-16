@@ -19,7 +19,7 @@ using namespace std;
 unsigned char w[10] = {0};
 //unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
 
-void compress(const char* fentry, const char* foutput, ptarbre arbre)
+void compress(const char* finput, const char* foutput, ptarbre arbre)
 {
 // w = Nul;
 //    tant que (lecture d'un caractère c) faire
@@ -34,7 +34,7 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
 //    écrire le code de w;
     
     FILE* entry = NULL;
-    entry = fopen("/Users/alex/developper/pa1415/testa.txt", "r");
+    entry = fopen(finput, "r");
     unsigned char c;
     int buffer = 0;
 
@@ -69,5 +69,3 @@ void compress(const char* fentry, const char* foutput, ptarbre arbre)
 
     fclose(entry);
 }
-
-
