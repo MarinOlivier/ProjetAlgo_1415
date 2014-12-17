@@ -34,9 +34,11 @@ void writer(int code, const char* foutput){
         cout << "Error, can't write file !" << endl;
         return;
     }
-
+    
     const char * str = (const char *)code;
+    // cout << str << endl; <---- utilisation de str = Seg Fault
+    //fputs(str, output);
 
-    fputs(str, output);
+   
     fclose(output);
 }

@@ -6,7 +6,7 @@
  
 # définition des variables
 CXX = g++
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -std=c++11
  
  
  

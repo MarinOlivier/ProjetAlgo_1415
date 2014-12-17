@@ -47,11 +47,15 @@ int main(int argc, const char * argv[])
 	//testLecture();
 
     // unsigned char s[2] = {'b', '\0'};
-    // affichage(arbre);
+    
     cout << "Le dernier code : " << showCode() << endl;
     char fileName[] = "test.txt";
     char out[] = "out.txt";
     compress(fileName, out, arbre);
+    //affichage(arbre);
+    // unsigned char a[] = {'a', 'b', '\0'};
+    // ajout(arbre, a);
+    // cout << "code de ab : " << getCode(a, arbre) << endl;
     
     //cout << "Taille de fichier : " << fileSize(fileName) << " octets" << endl;
     //compareSize(truc, truc);
