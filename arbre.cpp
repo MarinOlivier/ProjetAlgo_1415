@@ -43,7 +43,6 @@ void ajout(ptarbre arbre, unsigned char c[])
 		c++;
 		ajout(arbre->fils, c);
 	}
-
 	else if (arbre->frere == NULL)
 	{
 		ptarbre aux = creer_noeud('\0', codeFinal, NULL, NULL);
@@ -51,13 +50,13 @@ void ajout(ptarbre arbre, unsigned char c[])
 		arbre->frere = aux_bis;
 
 		codeFinal++;
-		// cout << "CF ++ " << endl;
+		cout << "CF ++ " << endl;
 		if (codeFinal == 256) {
 			codeFinal = 260;
 		}
 		
 	}
-	else if (arbre->frere->code > (int)c[0])
+	else if ((int)arbre->frere->etiq > (int)c[0])
 	{
 		ptarbre aux = arbre->frere;
 		ptarbre aux_bis = creer_noeud('\0', codeFinal, NULL, NULL);
@@ -65,11 +64,13 @@ void ajout(ptarbre arbre, unsigned char c[])
 		arbre->frere = aux_sec;
 		
 		codeFinal++;
-		// cout << "CF bis ++ " << endl;
+		cout << "CF bis ++ " << endl;
 		if (codeFinal == 256) {
 			codeFinal = 260;
 		}
 	}
+	else
+		cout << "Je me branle" << endl;
 }
 
 
@@ -96,6 +97,7 @@ int getCode(unsigned char s[], ptarbre arbre)
 	if (arbre == NULL && arbre->frere == NULL)
 		return -1;
 
+	//cout << "s[0] = " << s[0] << endl;
 	if (s[0] == arbre->etiq)
 	{
 		if (s[0] == '\0')
@@ -108,7 +110,7 @@ int getCode(unsigned char s[], ptarbre arbre)
 			if (arbre->frere != NULL)
 				return getCode(s, arbre->frere);
 			else
-				return -1;
+				return -2;
 		}
 		
 }
