@@ -38,19 +38,26 @@ void ajout(ptarbre arbre, unsigned char c[])
 	if (arbre->etiq != c[0] && arbre->frere != NULL && arbre->frere->code <= (int)c[0])
 		ajout(arbre->frere, c);
 
-	if (arbre->frere == NULL)
+	else if (arbre->etiq == c[0] && c[1] != '\0')
+	{
+		c++;
+		ajout(arbre->fils, c);
+	}
+
+	else if (arbre->frere == NULL)
 	{
 		ptarbre aux = creer_noeud('\0', codeFinal, NULL, NULL);
 		ptarbre aux_bis = creer_noeud(c[0], codeFinal, NULL, aux);
 		arbre->frere = aux_bis;
 
 		codeFinal++;
+		// cout << "CF ++ " << endl;
 		if (codeFinal == 256) {
 			codeFinal = 260;
 		}
 		
 	}
-	if (arbre->frere->code > (int)c[0])
+	else if (arbre->frere->code > (int)c[0])
 	{
 		ptarbre aux = arbre->frere;
 		ptarbre aux_bis = creer_noeud('\0', codeFinal, NULL, NULL);
@@ -58,14 +65,10 @@ void ajout(ptarbre arbre, unsigned char c[])
 		arbre->frere = aux_sec;
 		
 		codeFinal++;
+		// cout << "CF bis ++ " << endl;
 		if (codeFinal == 256) {
 			codeFinal = 260;
 		}
-	}
-	if (arbre->etiq == c[0] && c[1] != '\0')
-	{
-		c++;
-		ajout(arbre->fils, c);
 	}
 }
 
