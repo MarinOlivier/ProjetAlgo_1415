@@ -19,6 +19,7 @@ typedef struct arbre{
 } noeud, *ptarbre  ;
 
 
+
 ptarbre creer_arbre();
 ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils);
 void ajout(ptarbre arbre, unsigned char s[]);
