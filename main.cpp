@@ -53,6 +53,9 @@ int main(int argc, const char * argv[])
     char out[] = "out.txt";
     compress(fileName, out, arbre);
 
+    unsigned char a[] = {'a', 'b', '\0'};
+    cout << "get code ab : " << getCode(a, arbre) << endl;
+
     // unsigned char a[] = {'a', 'b', '\0'};
     // ajout(arbre, a);
     // cout << getCode(a, arbre) << endl;
@@ -67,7 +70,7 @@ int main(int argc, const char * argv[])
     // }
 
     //affichage(arbre);
-    // unsigned char a[] = {'a', 'b', '\0'};
+    
     // ajout(arbre, a);
     // cout << "code de ab : " << getCode(a, arbre) << endl;
     
