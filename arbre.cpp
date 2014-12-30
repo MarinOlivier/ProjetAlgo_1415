@@ -35,16 +35,20 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 
 void ajout(ptarbre arbre, unsigned char c[])
 {
-	if (arbre->etiq != c[0] && arbre->frere != NULL && arbre->frere->code <= (int)c[0])
+	if (arbre->etiq != c[0] && arbre->frere != NULL) // && arbre->frere->code <= (int)c[0])
 	{
-		cout << "ajout de " << c << " dans frere de " << arbre->etiq << endl;
+		//cout << "ajout de " << c << " dans frere de " << arbre->etiq << endl;
 		ajout(arbre->frere, c);
 	}
 
 	else if (arbre->etiq == c[0] && c[1] != '\0')
 	{
 		c++;
-		cout << "ajout de " << c << " dans fils de " << arbre->etiq << endl;
+		// cout << "ajout de " << c << " sur " << arbre->fils->etiq << " fils de " << arbre->etiq << endl;
+		// if (arbre->fils->frere != NULL)
+		// {
+		// 	cout << " avec " << arbre->fils->frere->etiq << " comme frere" << endl;
+		// }
 		ajout(arbre->fils, c);
 	}
 	else if (arbre->frere == NULL)
