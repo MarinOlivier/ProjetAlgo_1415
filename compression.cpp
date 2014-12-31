@@ -17,7 +17,7 @@
 using namespace std;
 
 
-unsigned char w[10] = {0};
+unsigned char w[10000] = {0};
 //unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
 
 void compress(const char* finput, const char* foutput, ptarbre arbre)
@@ -55,15 +55,15 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
         // cout << "w = " << w << " i = " << i << endl;
         w[i] = c;
 
-        //cout << "w = " << w;
-        //cout << " dans le dico ? " << getCode(w, arbre) << endl;
+        // cout << "w = " << w;
+        // cout << " dans le dico ? " << getCode(w, arbre) << endl;
         if (getCode(w, arbre) > 0)
             w[i] = c;
         else {
-            //cout << "ajout de " << w << endl;
+            // cout << "ajout de " << w << endl;
             ajout(arbre, w);
             int codeToWrite = getCode(w, arbre);
-            //cout << "code de " << w << " : " << codeToWrite << " ecriture." << endl;
+            // cout << "code de " << w << " : " << codeToWrite << " ecriture." << endl;
             writer(codeToWrite, foutput);
             memset(w, 0, sizeof(w));
             w[0] = c;
@@ -73,6 +73,6 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
 
     int codeToWrite = getCode(w, arbre);
     writer(codeToWrite, foutput);
-    
+
     fclose(entry);
 }
