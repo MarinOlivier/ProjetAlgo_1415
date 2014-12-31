@@ -36,8 +36,10 @@ void writer(int code, const char* foutput){
     }
     
     const char * str = (const char *)code;
-    // cout << str << endl; <---- utilisation de str = Seg Fault
+    cout << code << endl;// <---- utilisation de str = Seg Fault
     //fputs(str, output);
+    fprintf (output, "%d\n",code);
+    //fputc(code, output);
 
    
     fclose(output);

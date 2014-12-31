@@ -55,15 +55,15 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
         // cout << "w = " << w << " i = " << i << endl;
         w[i] = c;
 
-        cout << "w = " << w;
-        cout << " dans le dico ? " << getCode(w, arbre) << endl;
+        //cout << "w = " << w;
+        //cout << " dans le dico ? " << getCode(w, arbre) << endl;
         if (getCode(w, arbre) > 0)
             w[i] = c;
         else {
-            cout << "ajout de " << w << endl;
+            //cout << "ajout de " << w << endl;
             ajout(arbre, w);
             int codeToWrite = getCode(w, arbre);
-            cout << "code de " << w << " : " << codeToWrite << " ecriture." << endl;
+            //cout << "code de " << w << " : " << codeToWrite << " ecriture." << endl;
             writer(codeToWrite, foutput);
             memset(w, 0, sizeof(w));
             w[0] = c;

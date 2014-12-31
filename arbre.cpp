@@ -50,7 +50,7 @@ void ajout(ptarbre arbre, unsigned char c[])
 		arbre->frere = aux_bis;
 
 		codeFinal++;
-		cout << "CF ++ " << endl;
+		//cout << "CF ++ " << endl;
 		if (codeFinal == 256) {
 			codeFinal = 260;
 		}
@@ -64,7 +64,7 @@ void ajout(ptarbre arbre, unsigned char c[])
 		arbre->frere = aux_sec;
 		
 		codeFinal++;
-		cout << "CF bis ++ " << endl;
+		//cout << "CF bis ++ " << endl;
 		if (codeFinal == 256) {
 			codeFinal = 260;
 		}
