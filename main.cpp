@@ -78,13 +78,13 @@ int main(int argc, const char * argv[])
     // cout << "code de ab : " << getCode(a, arbre) << endl;
     
     //cout << "Taille de fichier : " << fileSize(fileName) << " octets" << endl;
-    //compareSize(truc, truc);
-    
+    compareSize(fileName, out);
+    cout << "Le dernier code : " << showCode() << endl;
    // Boucle lol pour voir le temps d'exécution du programme
-   short k = 0;
+   /*short k = 0;
    for (int i = 0; i < 10000; i++)
        for (int j = 0; j < 10000; j++)
-           k++;
+           k++;*/
     
     Clock::time_point t1 = Clock::now();
     milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);

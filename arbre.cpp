@@ -70,7 +70,7 @@ void ajout(ptarbre arbre, unsigned char c[])
 		}
 	}
 	else
-		cout << "Error : Aucune conditions." << endl;
+		cout << "Error : Aucune condition." << endl;
 }
 
 
