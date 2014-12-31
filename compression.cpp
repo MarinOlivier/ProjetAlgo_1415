@@ -71,5 +71,8 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
         buffer = fgetc(entry);
     }
 
+    int codeToWrite = getCode(w, arbre);
+    writer(codeToWrite, foutput);
+    
     fclose(entry);
 }
