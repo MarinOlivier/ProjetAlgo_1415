@@ -13,5 +13,6 @@
 
 char reader(char *);
 void writer(int code, const char* foutput);
+void writer_char(char code, const char* foutput);
 
 #endif

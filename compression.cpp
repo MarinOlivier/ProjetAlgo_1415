@@ -17,7 +17,7 @@
 using namespace std;
 
 
-unsigned char w[10000] = {0};
+static unsigned char w[10000] = {0};
 //unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
 
 void compress(const char* finput, const char* foutput, ptarbre arbre)

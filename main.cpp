@@ -48,11 +48,12 @@ int main(int argc, const char * argv[])
     cout << "Le dernier code : " << showCode() << endl;
     char fileName[] = "test.txt";
     char out[] = "out.txt";
+    char out_decomp[] = "out_decomp.txt";
 
 
-    compress(fileName, out, arbre);
+    // compress(fileName, out, arbre);
 
-    // decompress(out, fileName, arbre);
+    decompress(out, out_decomp, arbre);
 
 
     

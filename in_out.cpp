@@ -43,3 +43,19 @@ void writer(int code, const char* foutput){
    
     fclose(output);
 }
+
+void writer_char(char code, const char* foutput){
+    FILE* output = NULL;
+    output = fopen(foutput, "a+");
+
+    if (output == NULL) {
+        cout << "Error, can't write file !" << endl;
+        return;
+    }
+
+    fprintf (output, "%c",code);
+    //fputc(code, output);
+
+   
+    fclose(output);
+}
