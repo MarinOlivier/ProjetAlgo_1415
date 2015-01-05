@@ -12,6 +12,7 @@
 #include <ctime>
 #include <chrono>
 #include "compression.h"
+#include "decompression.h"
 
 #include "string.h"
 #include "in_out.h"
@@ -43,49 +44,22 @@ int main(int argc, const char * argv[])
 	ptarbre arbre = init_arbre_ASCII();
 
 	cout << "init success" << endl;
-    //testRecherche(arbre);
-	//testLecture();
-
-    // unsigned char s[2] = {'b', '\0'};
     
     cout << "Le dernier code : " << showCode() << endl;
     char fileName[] = "test.txt";
     char out[] = "out.txt";
+
+
     compress(fileName, out, arbre);
 
-    // unsigned char a[] = {'a', 'b', 'c', '\0'};
-    // cout << "get code abc : " << getCode(a, arbre) << endl;
+    // decompress(out, fileName, arbre);
 
-    // unsigned char b[] = {'a', 'b', '\0'};
-    // cout << "get code ab : " << getCode(b, arbre) << endl;
 
-    // unsigned char a[] = {'a', 'b', '\0'};
-    // ajout(arbre, a);
-    // cout << getCode(a, arbre) << endl;
-
-    // unsigned char b[] = {'c', 'b', '\0'};
-    // ajout(arbre, b);
-    // cout << getCode(b, arbre) << endl;
-    // if(getCode(b, arbre) <= 0)
-    // {
-    //     ajout(arbre, b);
-    //     cout << getCode(b, arbre) << endl;
-    // }
-
-    //affichage(arbre);
     
-    // ajout(arbre, a);
-    // cout << "code de ab : " << getCode(a, arbre) << endl;
-    
-    //cout << "Taille de fichier : " << fileSize(fileName) << " octets" << endl;
-    compareSize(fileName, out);
-    cout << "Le dernier code : " << showCode() << endl;
-   // Boucle lol pour voir le temps d'exécution du programme
-   /*short k = 0;
-   for (int i = 0; i < 10000; i++)
-       for (int j = 0; j < 10000; j++)
-           k++;*/
-    
+    // compareSize(fileName, out);
+    // cout << "Le dernier code : " << showCode() << endl;
+
+
     Clock::time_point t1 = Clock::now();
     milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
     cout << "Temps d'exécution du programme : " << ms.count() << "ms\n";

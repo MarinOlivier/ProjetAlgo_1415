@@ -10,5 +10,8 @@
 #ifndef projet_algo_decompression_h
 #define projet_algo_decompression_h
 
+#include "arbre.h"
+
+void decompress(const char* finput, const char* foutput, ptarbre arbre);
 
 #endif

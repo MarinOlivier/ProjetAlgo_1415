@@ -62,6 +62,10 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
         else {
             // cout << "ajout de " << w << endl;
             ajout(arbre, w);
+
+            // passade de w+c a w
+            w[i] = 0;
+
             int codeToWrite = getCode(w, arbre);
             // cout << "code de " << w << " : " << codeToWrite << " ecriture." << endl;
             writer(codeToWrite, foutput);
