@@ -45,22 +45,25 @@ int main(int argc, const char * argv[])
 
 	cout << "init success" << endl;
     
-    cout << "Le dernier code : " << showCode() << endl;
-    char fileName[] = "test.txt";
+    //cout << "Le dernier code : " << showCode() << endl;
+    char fileName[] = "test2.txt";
     char out[] = "out.txt";
     char out_decomp[] = "out_decomp.txt";
 
 
-    // compress(fileName, out, arbre);
+    compress(fileName, out, arbre);
 
-    decompress(out, out_decomp, arbre);
-
+    // decompress(out, out_decomp, arbre);
 
     
     // compareSize(fileName, out);
-    // cout << "Le dernier code : " << showCode() << endl;
+    //affichage(arbre);
+    cout << "Le dernier code : " << showCode() << endl;
 
-
+    cout << "Code recherché ";
+    searchCode(502, arbre);
+    cout << endl;
+    
     Clock::time_point t1 = Clock::now();
     milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
     cout << "Temps d'exécution du programme : " << ms.count() << "ms\n";

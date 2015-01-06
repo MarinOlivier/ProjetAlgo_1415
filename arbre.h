@@ -14,6 +14,7 @@
 typedef struct arbre{
     char etiq;
     int code;
+    char mot[30] = {0};
     struct arbre * frere;
     struct arbre * fils;
 } noeud, *ptarbre  ;
@@ -27,5 +28,6 @@ ptarbre init_arbre_ASCII(void);
 int getCode(unsigned char s[], ptarbre arbre);
 void affichage(ptarbre arbre);
 int showCode(void);
+void searchCode(int code, ptarbre arbre);
 
 #endif

@@ -44,7 +44,7 @@ void decompress(const char* finput, const char* foutput, ptarbre arbre)
     entry = fopen(finput, "r");
     unsigned char entree[MAX] = {0};
     int c;
-    int i;
+    int i = 0;
 
     if (entry == NULL) {
         cout << "Error, can't read file !" << endl;

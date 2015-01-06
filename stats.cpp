@@ -43,5 +43,3 @@ void compareSize(const char * before, const char * after){
     cout << "Fichier à compresser : "<< fileSize1 << ", Fichier compressé : " << fileSize2 << endl;
     cout << fileSize1/(fileSize2-fileSize1) * 100 << "% de compression"<< endl;
 }
-
-
