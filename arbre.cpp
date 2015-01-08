@@ -21,7 +21,7 @@ ptarbre creer_arbre()
 	return arbre;
 }
 
-ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
+ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils, ptarbre pere)
 {
 	ptarbre aux;
 	aux = (ptarbre)malloc(sizeof(noeud));
@@ -29,6 +29,7 @@ ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils)
 	aux->code = code;
 	aux->frere = frere;
 	aux->fils = fils;
+	aux->pere = pere;
 	
 	return aux;
 }
@@ -45,8 +46,9 @@ void ajout(ptarbre arbre, unsigned char c[])
 	}
 	else if (arbre->frere == NULL)
 	{
-		ptarbre aux = creer_noeud('\0', codeFinal, NULL, NULL);
-		ptarbre aux_bis = creer_noeud(c[0], codeFinal, NULL, aux);
+		ptarbre aux = creer_noeud('\0', codeFinal, NULL, NULL, NULL);
+		ptarbre aux_bis = creer_noeud(c[0], codeFinal, NULL, aux, NULL);
+		aux->pere = aux_bis;
 		arbre->frere = aux_bis;
 
 		codeFinal++;
@@ -59,8 +61,9 @@ void ajout(ptarbre arbre, unsigned char c[])
 	else if ((int)arbre->frere->etiq > (int)c[0])
 	{
 		ptarbre aux = arbre->frere;
-		ptarbre aux_bis = creer_noeud('\0', codeFinal, NULL, NULL);
-		ptarbre aux_sec = creer_noeud(c[0], codeFinal, aux, aux_bis);
+		ptarbre aux_bis = creer_noeud('\0', codeFinal, NULL, NULL, NULL);
+		ptarbre aux_sec = creer_noeud(c[0], codeFinal, aux, aux_bis, NULL);
+		aux_bis->pere = aux_sec;
 		arbre->frere = aux_sec;
 		
 		codeFinal++;
@@ -80,7 +83,7 @@ ptarbre init_arbre_ASCII(void)
 	c[0] = (unsigned char)'\0';
 	c[1] = '\0';
 
-	ptarbre racine = creer_noeud((unsigned char)'\0', 0, NULL, NULL);
+	ptarbre racine = creer_noeud((unsigned char)'\0', 0, NULL, NULL, NULL);
 	ajout(racine, c);
 
 	for (int i = 1; i < 256; i++) {

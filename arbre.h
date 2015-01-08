@@ -17,12 +17,13 @@ typedef struct arbre{
     char mot[30] = {0};
     struct arbre * frere;
     struct arbre * fils;
+    struct arbre * pere;
 } noeud, *ptarbre  ;
 
 
 
 ptarbre creer_arbre();
-ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils);
+ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils, ptarbre pere);
 void ajout(ptarbre arbre, unsigned char s[]);
 ptarbre init_arbre_ASCII(void);
 int getCode(unsigned char s[], ptarbre arbre);
