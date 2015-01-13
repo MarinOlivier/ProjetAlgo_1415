@@ -29,6 +29,7 @@ ptarbre init_arbre_ASCII(void);
 int getCode(unsigned char s[], ptarbre arbre);
 void affichage(ptarbre arbre);
 int showCode(void);
-void searchCode(int code, ptarbre arbre);
+ptarbre searchCode(int code, ptarbre arbre);
+char* getWord(int val, ptarbre arbre);
 
 #endif

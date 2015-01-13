@@ -136,14 +136,24 @@ void affichage(ptarbre arbre)
 }
 
 
-// @TO_DO, faire fonctionner cette fonction qui ne dé†ecte pas les caractères > 256...
-void searchCode(int val, ptarbre arbre){
+ptarbre searchCode(int val, ptarbre arbre){
 	if(arbre == NULL)
-		return;
+		return NULL;
 	if (val == arbre->code)
-		cout << arbre->code << " lol "<< arbre->etiq << endl;
+		return arbre;
 	searchCode(val, arbre->fils );
 	searchCode(val, arbre->frere);
+}
+
+char* getWord(int val, ptarbre arbre)
+{
+	if (arbre == NULL)
+		return;
+	ptarbre feuille = searchCode(val, arbre); 
+	if (feuille != NULL)
+	{
+		// remonter l'arbre en sauvegardant chaque lettre
+	}
 }
 
 int showCode(void){

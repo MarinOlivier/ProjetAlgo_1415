@@ -65,11 +65,11 @@ void decompress(const char* finput, const char* foutput, ptarbre arbre)
         }
 
     	cout << "c : " << c << endl;
-    	if (c >= 260) // && c associer a une entré du dico)
+    	if (c >= 260 && searchCode(c, arbre) != NULL)
     	{
 
     	}
-    	else if(c >= 260) // && c pas associer a une entré du dico )
+    	else if(c >= 260 && searchCode(c, arbre) == NULL)
     	{
 
     	}
