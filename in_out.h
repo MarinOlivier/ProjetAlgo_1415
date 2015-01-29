@@ -14,5 +14,8 @@
 char reader(char *);
 void writer(int code, const char* foutput);
 void writer_char(char code, const char* foutput);
+static void mise_a_un (unsigned char * buffer, int i);
+void ecrire_code_binaire (unsigned int code, const char* foutput, int vider_buffer);
+
 
 #endif

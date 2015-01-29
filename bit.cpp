@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "bit.h"
+
 /* attention, ici utilisation de unsigned int (4 octets) */
 
 
@@ -23,7 +25,7 @@ char valeur_bit(unsigned int x, char i) /* donne la valeur du ieme bit */
 void visualiser(unsigned int x)
 {int i;
  printf("nombre = %d\n",x);
- for (i=31; i>=0; i--) printf("%d",valeur_bit(x,i));
+ for (i=31; i>=0; i--) printf("%d",valeur_bit(x,i, ));
  printf("\n");
 }
    
@@ -42,28 +44,28 @@ void mise_a_zero(unsigned int *x, char bit) /* mise a 0 du ieme bit */
 
 
 
-int main()/* petit programme principal pour tester */  
-{
-  int i;
-  char bit;
-  unsigned x = 0;
+// int main()/* petit programme principal pour tester */  
+// {
+//   int i;
+//   char bit;
+//   unsigned x = 0;
 
-  for (i=0;i<32;i++) deux_puissance[i]=puissance(i);
+//   for (i=0;i<32;i++) deux_puissance[i]=puissance(i);
   
-  visualiser(x);
+//   visualiser(x);
   
-  mise_a_un(&x,0); /* mise a 1 du bit d'indice 0 de x */
-  visualiser(x);
+//   mise_a_un(&x,0); /* mise a 1 du bit d'indice 0 de x */
+//   visualiser(x);
   
-  mise_a_un(&x,1);
-  visualiser(x);
+//   mise_a_un(&x,1);
+//   visualiser(x);
   
-  mise_a_un(&x,2);
-  visualiser(x);
+//   mise_a_un(&x,2);
+//   visualiser(x);
   
-  mise_a_zero(&x,1);
-  visualiser(x);
-}
+//   mise_a_zero(&x,1);
+//   visualiser(x);
+// }
 
 
 /*****************************************************************************  
