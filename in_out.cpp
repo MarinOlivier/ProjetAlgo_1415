@@ -45,7 +45,7 @@ void writer(int code, const char* foutput){
     fclose(output);
 }
 
-void writer_char(char code){
+void writer_char(unsigned char code){
     fprintf (output, "%c",code);
     //fputc(code, output);
 

@@ -16,7 +16,7 @@ static FILE * input = NULL;
 
 char reader(char *);
 void writer(int code, const char* foutput);
-void writer_char(char code);
+void writer_char(unsigned char  code);
 int fichier_existe(char * nom_fichier);
 void ouvrir_fichier_entree (char * nom_fichier_entree);
 void ouvrir_fichier_sortie (char * nom_fichier_sortie);

@@ -53,6 +53,7 @@ static unsigned char w[MAX] = {0};
 
 void decompress(ptarbre arbre)
 {
+    unsigned char c;
     fscanf(input, "%d", &c);
     writer_char(c);
     unsigned char * entree = (unsigned char*)malloc(sizeof(unsigned char));
@@ -61,9 +62,11 @@ void decompress(ptarbre arbre)
 
     while(fscanf(input, "%d", &c) != EOF)
     {
-        entry = searchCode(c, arbre);
+        entree = searchCode(c, arbre);
         writer_char(c);
         addChar(w, entree[0]);
+        memset(w, 0, sizeof(w));
+        
         w = entree;
     }
 
