@@ -38,9 +38,10 @@ void compress(ptarbre arbre)
     int buffer = 0;
 
     // buffer = fgetc(input);
+    cout << "1" << endl;
     buffer = lire_caractere ();
 
-    while(buffer != NULL){        
+    while(buffer != EOF){     
         short i = 0;
 
         c = buffer;
@@ -53,23 +54,22 @@ void compress(ptarbre arbre)
         // cout << "w = " << w;
         // cout << " dans le dico ? " << getCode(w, arbre) << endl;
         if (getCode(w, arbre) > 0)
-            w[i] = c;
+        {
+            w[i] = c; 
+        }
         else {
             // cout << "ajout de " << w << endl;
             ajout(arbre, w);
-
             // passage de w+c a w
             w[i] = 0;
 
             int codeToWrite = getCode(w, arbre);
-
             ecrire_code_binaire (codeToWrite, 0);
             memset(w, 0, sizeof(w));
             w[0] = c;
         }
         buffer = lire_caractere ();
     }
-
     int codeToWrite = getCode(w, arbre);
     ecrire_code_binaire (codeToWrite, 1);
 
