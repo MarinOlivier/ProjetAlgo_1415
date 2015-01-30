@@ -92,7 +92,12 @@ int main(int argc, const char * argv[])
     char * bidule = NULL;
     bidule = (char *)malloc(sizeof(unsigned char *) * 7);
     strcpy(bidule,"Hello ");
-    compress(fileName, out, arbre);
+
+    ouvrir_fichier_entree(fileName);
+    ouvrir_fichier_sortie(out);
+    compress(arbre);
+
+    fermer_fichiers();
 
     // decompress(out, out_decomp, arbre);
 

@@ -12,6 +12,6 @@
 
 #include "arbre.h"
 
-void compress(const char* fentry, const char* foutput, ptarbre arbre);
+void compress(ptarbre arbre);
 
 #endif
