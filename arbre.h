@@ -32,5 +32,6 @@ int showCode(void);
 unsigned char * addChar(unsigned char * str, unsigned char c);
 unsigned char * searchCode(int code, ptarbre arbre);
 unsigned char* getWord(int val, ptarbre arbre);
+unsigned char * copier_chaine (unsigned char * chaine);
 
 #endif

@@ -70,14 +70,16 @@ void menu(int n){
                     ouvrir_fichier_entree(fileName);
                     ouvrir_fichier_sortie(out);
                     compress(arbre);
+                    fermer_fichiers();
                 } else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
             } else {
-                 ouvrir_fichier_entree(fileName);
+                ouvrir_fichier_entree(fileName);
                 ouvrir_fichier_sortie(out);
                 compress(arbre);
+                fermer_fichiers();
             }
             break;
 
@@ -98,9 +100,14 @@ void menu(int n){
                 cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
                 cin >> c;
                 if (c == 'O' || c == 'o')
-                    //decompress(fileName,out);
+                {
+                    ouvrir_fichier_entree(fileName);
+                    ouvrir_fichier_sortie(out);
+                    decompress(arbre);
+                    fermer_fichiers();
 
                     cout << "DECOMPRESS" << endl;
+                }
                 else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
@@ -146,6 +153,7 @@ int main(int argc, char * argv[])
                             ouvrir_fichier_entree(argv[2]);
                             ouvrir_fichier_sortie(argv[3]);
                             compress(arbre);
+                            fermer_fichiers();
                         } else break;    
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;
@@ -154,6 +162,7 @@ int main(int argc, char * argv[])
                         ouvrir_fichier_entree(argv[2]);
                         ouvrir_fichier_sortie(argv[3]);
                         compress(arbre);
+                        fermer_fichiers();
                     }
                     break;
                 case 'd':
@@ -166,8 +175,13 @@ int main(int argc, char * argv[])
                         cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour arrêter le programme" << endl;
                         cin >> c;
                         if (c == 'O' || c == 'o')
-                            //decompress(argv[2],argv[3]);
+                        {
+                            ouvrir_fichier_entree(argv[2]);
+                            ouvrir_fichier_sortie(argv[3]);
+                            decompress(arbre);
+                            fermer_fichiers();
                             cout << "DECOMPRESS" << endl;
+                        }
                         else break;    
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;

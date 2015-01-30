@@ -184,6 +184,19 @@ unsigned char * searchCode(int val, ptarbre arbre){
 	}
 }
 
+unsigned char * copier_chaine (unsigned char * chaine) {
+    int longueur_chaine = strlen ((char *)chaine);
+    unsigned char * copie = NULL;
+    
+    copie = (unsigned char *)malloc(sizeof (unsigned char) * (longueur_chaine + 1));
+    while (longueur_chaine >= 0) {
+        copie[longueur_chaine] = chaine[longueur_chaine];
+        longueur_chaine--;
+    }
+    
+    return copie;
+}
+
 // unsigned char* getWord(int val, ptarbre arbre)
 // {
 // 	if (arbre == NULL)

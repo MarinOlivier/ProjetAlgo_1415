@@ -45,12 +45,15 @@ void writer(int code, const char* foutput){
     fclose(output);
 }
 
-void writer_char(unsigned char code){
-    fprintf (output, "%c",code);
-    //fputc(code, output);
+void writer_char(unsigned char * code){
+    fprintf (output, "%s",code);
+}
 
-   
-    fclose(output);
+unsigned char * read_char()
+{
+    unsigned char* code = (unsigned char*)malloc(sizeof(unsigned char));
+    fread(code, sizeof(unsigned char), 1, input);
+    return code;
 }
 
 int fichier_existe(char * nom_fichier)

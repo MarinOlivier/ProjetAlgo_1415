@@ -12,6 +12,6 @@
 
 #include "arbre.h"
 
-void decompress(const char* finput, const char* foutput, ptarbre arbre);
+void decompress(ptarbre arbre);
 
 #endif
