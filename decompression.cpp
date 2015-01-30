@@ -35,69 +35,36 @@ using namespace std;
 //      w = entrée;
 // fin tant que;
 
+
+// Autre version plus simple 
+// read a character k;
+//    output k;
+//    w = k;
+//    while ( read a character k )    
+//   /* k could be a character or a code. */
+//         {
+//          entry = dictionary entry for k;
+//          output entry;
+//          add w + entry[0] to dictionary;
+//          w = entry;
+//         }
+
 static unsigned char w[MAX] = {0};
 
-void decompress(const char* finput, const char* foutput, ptarbre arbre)
+void decompress(ptarbre arbre)
 {
+    fscanf(input, "%d", &c);
+    writer_char(c);
+    unsigned char * entree = (unsigned char*)malloc(sizeof(unsigned char));
 
-	FILE* entry = NULL;
-    entry = fopen(finput, "r");
-    unsigned char entree[MAX] = {0};
-    int c;
-    int i = 0;
+    w[0] = c;
 
-    if (entry == NULL) {
-        cout << "Error, can't read file !" << endl;
-        return;
-    }
-
-    fscanf(entry, "%d", &c);
-    cout << "c : " << c << endl;
-    writer_char(c, foutput);
-
-    w[1] = c;
-
-    while(fscanf(entry, "%d", &c) != EOF)
+    while(fscanf(input, "%d", &c) != EOF)
     {
-
-    	while (w[i] != '\0') {
-            i++;
-        }
-
-    	cout << "c : " << c << endl;
-    	if (c >= 260 && searchCode(c, arbre) != NULL)
-    	{
-
-    	}
-    	else if(c >= 260 && searchCode(c, arbre) == NULL)
-    	{
-
-    	}
-    	else
-    	{
-    		entree[0] = (char)c;
-    	}
-
-    	cout << "entree : " << entree << endl;
-
-    	// écriture de entree
-    	int k=0;
-    	while(entree[k] != 0)
-    	{
-    		writer_char(entree[k], foutput);
-    		k++;
-    	}
-
-    	// ajout de w+entree[0] au dico
-    	w[i] = entree[0];
-    	cout << "ajout de " << w << endl;
-    	ajout(arbre, w);
-
-    	// w = entree
-    	int j = 0;
-    	for (j = 0; j < MAX; j++)
-    		w[j] = entree[j];
-
+        entry = searchCode(c, arbre);
+        writer_char(c);
+        addChar(w, entree[0]);
+        w = entree;
     }
 
 }
