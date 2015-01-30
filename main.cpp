@@ -71,6 +71,7 @@ void menu(int n){
                     ouvrir_fichier_sortie(out);
                     compress(arbre);
                     fermer_fichiers();
+                    cout << "COMPRESS" << endl;
                 } else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
@@ -80,6 +81,7 @@ void menu(int n){
                 ouvrir_fichier_sortie(out);
                 compress(arbre);
                 fermer_fichiers();
+                cout << "COMPRESS" << endl;
             }
             break;
 
@@ -112,6 +114,12 @@ void menu(int n){
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
+            } else {
+                ouvrir_fichier_entree(fileName);
+                ouvrir_fichier_sortie(out);
+                decompress(arbre);
+                fermer_fichiers();
+                cout << "DECOMPRESS" << endl;
             }
             break;
 
@@ -154,6 +162,7 @@ int main(int argc, char * argv[])
                             ouvrir_fichier_sortie(argv[3]);
                             compress(arbre);
                             fermer_fichiers();
+                            cout << "COMPRESS" << endl;
                         } else break;    
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;
@@ -163,6 +172,7 @@ int main(int argc, char * argv[])
                         ouvrir_fichier_sortie(argv[3]);
                         compress(arbre);
                         fermer_fichiers();
+                        cout << "COMPRESS" << endl;
                     }
                     break;
                 case 'd':
@@ -186,6 +196,12 @@ int main(int argc, char * argv[])
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;
                         break;
+                    } else {
+                        ouvrir_fichier_entree(argv[2]);
+                        ouvrir_fichier_sortie(argv[3]);
+                        decompress(arbre);
+                        fermer_fichiers();
+                        cout << "DECOMPRESS" << endl;
                     }
                     break;
                 case 'h':
@@ -198,36 +214,8 @@ int main(int argc, char * argv[])
             }
         }
     }
-    //cout << "Le dernier code : " << showCode() << endl;
-    /*char fileName[] = "test2.txt";
-    char out[] = "out.txt";
-    char out_decomp[] = "out_decomp.txt";
-    char * bidule = NULL;
-    bidule = (char *)malloc(sizeof(unsigned char *) * 7);
-    strcpy(bidule,"Hello ");
-
-    ouvrir_fichier_entree(fileName);
-    ouvrir_fichier_sortie(out);
-    compress(arbre);
-
-    fermer_fichiers();
-
-    // decompress(out, out_decomp, arbre);
 
     
-    // compareSize(fileName, out);
-    //affichage(arbre);
-    cout << "Le dernier code : " << showCode() << endl;
 
-
-    cout << "Code recherché : 4060 =  \"";
-    cout << "Code recherché : 'a' =  \"";
-    cout << searchCode('a', arbre);
-    cout << "\""<< endl;
-    
-    Clock::time_point t1 = Clock::now();
-    milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
-    cout << "Temps d'exécution du programme : " << ms.count() << "ms\n";
-    compareSize(fileName,out);*/
     return 0;
 }

@@ -19,7 +19,7 @@ using namespace std;
 char reader(char * uncomp_file){
     char current_char;
     FILE* entry;
-    entry = fopen("/Users/alex/developper/pa1415/test.txt", "r");
+    entry = fopen(uncomp_file, "r");
     current_char = fgetc(entry);
     while(current_char != EOF){
         cout << current_char;
