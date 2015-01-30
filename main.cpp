@@ -70,11 +70,14 @@ void menu(int n){
                     ouvrir_fichier_entree(fileName);
                     ouvrir_fichier_sortie(out);
                     compress(arbre);
-                    cout << "COMPRESS" << endl;
                 } else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
+            } else {
+                 ouvrir_fichier_entree(fileName);
+                ouvrir_fichier_sortie(out);
+                compress(arbre);
             }
             break;
 
@@ -114,12 +117,12 @@ int main(int argc, char * argv[])
 {
 
     // Mise en place du chrono pour déterminer le temps d'execution
-   /* typedef std::chrono::high_resolution_clock Clock;
+   /*typedef std::chrono::high_resolution_clock Clock;
     typedef std::chrono::milliseconds milliseconds;
-    Clock::time_point t0 = Clock::now();
+    Clock::time_point t0 = Clock::now();*/
     
     
-    const char * truc;*/
+    const char * truc;
 	
 
     char c = '\0';
@@ -147,6 +150,10 @@ int main(int argc, char * argv[])
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;
                         break;
+                    } else {
+                        ouvrir_fichier_entree(argv[2]);
+                        ouvrir_fichier_sortie(argv[3]);
+                        compress(arbre);
                     }
                     break;
                 case 'd':

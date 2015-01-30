@@ -36,6 +36,9 @@ void compress(ptarbre arbre)
 
     unsigned char c;
     int buffer = 0;
+    typedef std::chrono::high_resolution_clock Clock;
+    typedef std::chrono::milliseconds milliseconds;
+    Clock::time_point t0 = Clock::now();
 
     // buffer = fgetc(input);
     buffer = lire_caractere ();
@@ -75,4 +78,7 @@ void compress(ptarbre arbre)
     int codeToWrite = getCode(w, arbre);
     ecrire_code_binaire (codeToWrite, 1);
 
+    Clock::time_point t1 = Clock::now();
+    milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
+    cout << "Temps d'exécution du programme : " << ms.count() << "ms\n";
 }
