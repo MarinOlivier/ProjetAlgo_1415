@@ -16,12 +16,6 @@
 
 using namespace std;
 
-
-static unsigned char w[10000] = {0};
-//unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
-
-void compress(ptarbre arbre)
-{
 // w = Nul;
 //    tant que (lecture d'un caractère c) faire
 //        si (w + c existe dans le dictionnaire) alors
@@ -34,36 +28,33 @@ void compress(ptarbre arbre)
 //    fin tant que
 //    écrire le code de w;
 
+static unsigned char w[10000] = {0};
+
+void compress(ptarbre arbre)
+{
     unsigned char c;
     int buffer = 0;
     typedef std::chrono::high_resolution_clock Clock;
     typedef std::chrono::milliseconds milliseconds;
     Clock::time_point t0 = Clock::now();
 
-    // buffer = fgetc(input);
     buffer = lire_caractere ();
 
     while(buffer != EOF){     
         short i = 0;
 
         c = buffer;
-        // cout << "c = " << c << endl;
         while (w[i] != '\0') {
             i++;
         }
-        // cout << "i = " << i << endl;
-        // cout << "w = " << w << " i = " << i << endl;
+
         w[i] = c;
 
-        // cout << "w = " << w;
-        // cout << " dans le dico ? " << getCode(w, arbre) << endl;
         if (getCode(w, arbre) > 0)
         {
             w[i] = c; 
         }
         else {
-            // cout << "ajout de " << w << endl;
-            // cout << "ajout de w = " << w << endl;
             ajout(arbre, w);
             // passage de w+c a w
             w[i] = 0;
