@@ -11,9 +11,10 @@
 #include <stdlib.h>
 #include <ctime>
 #include <chrono>
+#include <unistd.h>    /* for getopt */
+
 #include "compression.h"
 #include "decompression.h"
-
 #include "string.h"
 #include "in_out.h"
 #include "arbre.h"
@@ -28,76 +29,164 @@ void testRecherche(ptarbre arbre){
 	cout << getCode(mot, arbre) << endl;
 }
 
-// void testLecture(){
-//     reader("test.rtf");
-// }
-
-/*unsigned char * insertString(unsigned char * str, unsigned char c, int place){
-    
-    int length = strlen((char*)str);
-    str = (unsigned char *) realloc(str,sizeof(unsigned char) * (length + 2));
-    //strcpy((char *)str,(char *)tempC);
-    if (str!= NULL) {
-        for(int i = length +1; i >= 0; i--)
-            if(i > place) str[i] = str[i-1];
-            else str[i] = c;
-    }
-
-    return str;
-}*/
-
-void menu(void){
-    cout << "1. Compresser un fichier" << endl;
-    cout << "2. Décompresser un fichier" << endl;
-    cout << "3. Quitter le programme" << endl;
-}
-
-int main(int argc, const char * argv[])
-{
-
-    //cout << "\033[2J\033[1;1H";
-    switch(argc){
-        case 1: 
-            cout << "Cas 1 ! \n";
-            break;
-        case 2:
-            cout << "Cas 2 :) \n";
-            break;
-        default:
-            cout << "none";
-    }
+void menu(int n){
+    char c;
+    ptarbre arbre = init_arbre_ASCII();
+    cout << "\033[2J\033[1;1H";
+    char fileName[40] = {'\0'};
+    char out[40] = {'\0'};
     // Affichage du menu :
     char fN[] = "reader.txt";
     //reader(fN);
-    cout << endl;
+    if(!n){
+        cout << "\033[2J\033[1;1H";
+        cout << endl;
+        cout << "Choisissez la tâche à effectuer : "<< endl;
+        cout << "1. Compresser un fichier" << endl;
+        cout << "2. Décompresser un fichier" << endl;
+        cout << "0. Quitter le programme" << endl;
+        cin >> n;
+    }
+    switch(n){
+        case 0: 
+            cout << "A bientôt"<< endl;
+            exit(EXIT_SUCCESS);
 
+        case 1:
+            cout << "\033[2J\033[1;1H";
+            cout << "Entrez le nom du fichier à compresser : ";
+            cin >> fileName;
+            if((fileName[0] == '\0') || !fichier_existe(fileName)){
+                cout << "Le fichier n'existe pas, retour au début" << endl;
+                return menu(1);
+            }
 
+            cout << "Entrez le nom du fichier de sortie : ";
+            cin >> out;
+            if((out[0] != '\0') && fichier_existe(out)){
+                cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
+                cin >> c;
+                if (c == 'O' || c == 'o'){
+                    ouvrir_fichier_entree(fileName);
+                    ouvrir_fichier_sortie(out);
+                    compress(arbre);
+                    cout << "COMPRESS" << endl;
+                } else return menu(1);    
+            } else if(fileName[0] == '\0'){
+                cout << "Nom de fichier invalide" << endl;
+                return menu(1);
+            }
+            break;
+
+        case 2:
+            cout << "\033[2J\033[1;1H";
+            cout << "Entrez le nom du fichier à décompresser : ";
+            cin >> fileName;
+            cout << endl;
+            if((fileName[0] == '\0') || !fichier_existe(fileName)){
+                cout << "Le fichier n'existe pas, retour au début" << endl;
+                return menu(1);
+            }
+
+            cout << "Entrez le nom du fichier de sortie : ";
+            cin >> out;
+            cout << endl;
+            if((out[0] != '\0') && fichier_existe(out)){
+                cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
+                cin >> c;
+                if (c == 'O' || c == 'o')
+                    //decompress(fileName,out);
+
+                    cout << "DECOMPRESS" << endl;
+                else return menu(1);    
+            } else if(fileName[0] == '\0'){
+                cout << "Nom de fichier invalide" << endl;
+                return menu(1);
+            }
+            break;
+
+        default:
+            menu(0);
+    }
+}
+
+int main(int argc, char * argv[])
+{
 
     // Mise en place du chrono pour déterminer le temps d'execution
-    typedef std::chrono::high_resolution_clock Clock;
+   /* typedef std::chrono::high_resolution_clock Clock;
     typedef std::chrono::milliseconds milliseconds;
     Clock::time_point t0 = Clock::now();
     
     
-    const char * truc;
-	ptarbre arbre = init_arbre_ASCII();
+    const char * truc;*/
+	
 
-	cout << "init success" << endl;
-    
+    char c = '\0';
+    char opt;
+    if(argc == 1)                       // Programme lancé sans arguments, on affiche le menu de saisie
+        menu(0);
+    else {                              // Arguments présents, on enchaine
+        ptarbre arbre = init_arbre_ASCII();
+        while ((opt = getopt(argc, argv, ":cd:h")) != -1) {
+            switch(opt){
+                case 'c':
+                    if((argv[2][0] == '\0') || !fichier_existe((char*)argv[2])){
+                        cout << "Le fichier n'existe pas, arrêt du programme" << endl;
+                        break;
+                    }
+
+                    if((argv[3][0] != '\0') && fichier_existe(argv[3])){
+                        cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour arrêter le programme" << endl;
+                        cin >> c;
+                        if (c == 'O' || c == 'o'){
+                            ouvrir_fichier_entree(argv[2]);
+                            ouvrir_fichier_sortie(argv[3]);
+                            compress(arbre);
+                        } else break;    
+                    } else if(argv[2][0] == '\0'){
+                        cout << "Nom de fichier invalide" << endl;
+                        break;
+                    }
+                    break;
+                case 'd':
+                    if((argv[2][0] == '\0') || !fichier_existe(argv[2])){
+                        cout << "Le fichier n'existe pas, arrêt du programme" << endl;
+                        break;
+                    }
+
+                    if((argv[3][0] != '\0') && fichier_existe(argv[3])){
+                        cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour arrêter le programme" << endl;
+                        cin >> c;
+                        if (c == 'O' || c == 'o')
+                            //decompress(argv[2],argv[3]);
+                            cout << "DECOMPRESS" << endl;
+                        else break;    
+                    } else if(argv[2][0] == '\0'){
+                        cout << "Nom de fichier invalide" << endl;
+                        break;
+                    }
+                    break;
+                case 'h':
+                    cout << "\033[2J\033[1;1H";
+                    reader("help.txt");
+                    break;
+                default:
+                    cout << "Erreur ! "; 
+                    break;
+            }
+        }
+    }
     //cout << "Le dernier code : " << showCode() << endl;
-    char fileName[] = "test2.txt";
+    /*char fileName[] = "test2.txt";
     char out[] = "out.txt";
     char out_decomp[] = "out_decomp.txt";
-
     char * bidule = NULL;
     bidule = (char *)malloc(sizeof(unsigned char *) * 7);
     strcpy(bidule,"Hello ");
 
-
-
     ouvrir_fichier_entree(fileName);
     ouvrir_fichier_sortie(out);
-
     compress(arbre);
 
     fermer_fichiers();
@@ -109,13 +198,15 @@ int main(int argc, const char * argv[])
     //affichage(arbre);
     cout << "Le dernier code : " << showCode() << endl;
 
+
     cout << "Code recherché : 4060 =  \"";
+    cout << "Code recherché : 'a' =  \"";
     cout << searchCode('a', arbre);
     cout << "\""<< endl;
     
     Clock::time_point t1 = Clock::now();
     milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
     cout << "Temps d'exécution du programme : " << ms.count() << "ms\n";
-    
+    compareSize(fileName,out);*/
     return 0;
 }

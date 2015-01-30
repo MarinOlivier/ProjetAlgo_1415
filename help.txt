@@ -1,0 +1,15 @@
+Bienvenue dans le fichier d'aide du programme de compression LZW
+
+Le programme peut être lancé en ligne de commande ou peut être utilisé grâce à un menu
+
+./lzw lance le programme avec son menu
+
+./lzw [cdh] [fichier1] [fichier2]
+
+Options :
+	-h affiche ce fichier d'aide
+
+	-c fichier1 fichier2 lance la compression du fichier et range les données compressées dans le fichier2
+
+	-d fichier1 fichier2 lance la décompression du fichier et range les données décompressées dans le fichier2
+
