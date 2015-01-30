@@ -13,7 +13,8 @@
 
 using namespace std;
 
-#define NB_BITS_CODE 8
+#define NB_BITS_CODE 14
+
 
 char reader(char * uncomp_file){
     char current_char;
@@ -63,10 +64,9 @@ void writer_char(char code, const char* foutput){
 
 /** @brief Ouvre le fichier d'entree.
  *
- * Initialise la variable globale fichier_entree par un descripteur sur 
+ * Initialise la variable globale input par un descripteur sur 
  * le fichier d'entree (lecture seule).
  * @param nom_fichier_entree  Chaine de caracteres du nom du fichier d'entree.
- * @param binaire  Booleen contenant si le fichier doit etre ouvert en binaire.
  * @return  void
  */
 void ouvrir_fichier_entree (char * nom_fichier_entree) 
@@ -74,16 +74,15 @@ void ouvrir_fichier_entree (char * nom_fichier_entree)
    input = fopen (nom_fichier_entree, "r");
 }
 
-/** @brief Ouvre le fichier d'entree.
+/** @brief Ouvre le fichier de sortie.
  *
- * Initialise la variable globale fichier_entree par un descripteur sur 
- * le fichier d'entree (lecture seule).
- * @param nom_fichier_entree  Chaine de caracteres du nom du fichier d'entree.
- * @param binaire  Booleen contenant si le fichier doit etre ouvert en binaire.
+ * Initialise la variable globale output par un descripteur sur 
+ * le fichier de sortie.
+ * @param nom_fichier_sortie  Chaine de caracteres du nom du fichier de sortie.
  * @return  void
  */
 void ouvrir_fichier_sortie (char * nom_fichier_sortie)
- {
+{
     output = fopen (nom_fichier_sortie, "a+");
 }
 
@@ -102,7 +101,8 @@ void fermer_fichiers ()
  * @param i  Position du bit a mettre a un.
  * @return  void
  */
-static void mise_a_un (unsigned char * buffer, int i) {
+static void mise_a_un (unsigned char * buffer, int i) 
+{
     unsigned char un = 1;
     un = un << i;
     *buffer = *buffer | un;
@@ -110,11 +110,9 @@ static void mise_a_un (unsigned char * buffer, int i) {
 
 /** @brief Lit le caractere suivant du fichier d'entree.
  * 
- * Lit le caractere suivant du fichier d'entree et alloue une chaine de 
- * caracteres contenant ce caractere. Si aucun caractere n'est lu, on renvoie le
- * pointeur NULL.
+ * Lit le caractere suivant du fichier d'entree.
  * @param void
- * @return  Retourne le caractere lu sous forme d'une chaine de caracteres.
+ * @return  Retourne le caractere lu sous forme d'un entier
  */
 int lire_caractere () 
 {
@@ -124,7 +122,11 @@ int lire_caractere ()
     return caractere_lu;
 }
 
-
+/** @brief Ecrit, en binaire, le code sur un certain nombre de bits
+ * @param code  Code a ecrire.
+ * @param vider_buffer  Booleen qui, lorsqu'il est à 1, ecrit le buffer restant.
+ * @return  void
+ */
 void ecrire_code_binaire (unsigned int code, int vider_buffer) 
 {
  
@@ -158,6 +160,9 @@ void ecrire_code_binaire (unsigned int code, int vider_buffer)
     }
 }
 
+/** @brief Lit, en binaire, le code sur un certain nombre de bits
+ * @return  Code lu sous forme d'entier positif
+ */
 unsigned int lire_code_binaire () 
 {
     static unsigned char buffer = 0; /* Debut d'ecriture dans le buffer à droite */

@@ -44,15 +44,15 @@ void compress(ptarbre arbre)
         short i = 0;
 
         c = buffer;
-        cout << "c = " << c << endl;
+        // cout << "c = " << c << endl;
         while (w[i] != '\0') {
             i++;
         }
-        cout << "i = " << i << endl;
+        // cout << "i = " << i << endl;
         // cout << "w = " << w << " i = " << i << endl;
         w[i] = c;
 
-        cout << "w = " << w;
+        // cout << "w = " << w;
         // cout << " dans le dico ? " << getCode(w, arbre) << endl;
         if (getCode(w, arbre) > 0)
         {
@@ -60,7 +60,7 @@ void compress(ptarbre arbre)
         }
         else {
             // cout << "ajout de " << w << endl;
-            cout << "ajout de w = " << w << endl;
+            // cout << "ajout de w = " << w << endl;
             ajout(arbre, w);
             // passage de w+c a w
             w[i] = 0;
