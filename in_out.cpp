@@ -61,6 +61,17 @@ void writer_char(char code, const char* foutput){
     fclose(output);
 }
 
+int fichier_existe(char * nom_fichier)
+{
+    FILE * file = NULL;
+    file = fopen(nom_fichier, "r");
+    if (file == NULL)
+    {
+        return 0;
+    }
+    fclose(file);
+    return 1;
+}
 
 /** @brief Ouvre le fichier d'entree.
  *
@@ -83,7 +94,7 @@ void ouvrir_fichier_entree (char * nom_fichier_entree)
  */
 void ouvrir_fichier_sortie (char * nom_fichier_sortie)
 {
-    output = fopen (nom_fichier_sortie, "a+");
+    output = fopen (nom_fichier_sortie, "w+");
 }
 
 /** @brief Ferme les descripteurs sur les fichiers de lecture et d'ecriture.
