@@ -108,6 +108,22 @@ static void mise_a_un (unsigned char * buffer, int i) {
     *buffer = *buffer | un;
 }
 
+/** @brief Lit le caractere suivant du fichier d'entree.
+ * 
+ * Lit le caractere suivant du fichier d'entree et alloue une chaine de 
+ * caracteres contenant ce caractere. Si aucun caractere n'est lu, on renvoie le
+ * pointeur NULL.
+ * @param void
+ * @return  Retourne le caractere lu sous forme d'une chaine de caracteres.
+ */
+int lire_caractere () 
+{
+    int caractere_lu;
+    caractere_lu = fgetc (input);
+
+    return caractere_lu;
+}
+
 
 void ecrire_code_binaire (unsigned int code, int vider_buffer) 
 {

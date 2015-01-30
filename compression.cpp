@@ -36,9 +36,11 @@ void compress(ptarbre arbre)
 
     unsigned char c;
     int buffer = 0;
-    
-    buffer = fgetc(input);
-    while(buffer != EOF){        
+
+    // buffer = fgetc(input);
+    buffer = lire_caractere ();
+
+    while(buffer != NULL){        
         short i = 0;
 
         c = buffer;
@@ -65,7 +67,7 @@ void compress(ptarbre arbre)
             memset(w, 0, sizeof(w));
             w[0] = c;
         }
-        buffer = fgetc(input);
+        buffer = lire_caractere ();
     }
 
     int codeToWrite = getCode(w, arbre);

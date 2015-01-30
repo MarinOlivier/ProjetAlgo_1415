@@ -93,8 +93,11 @@ int main(int argc, const char * argv[])
     bidule = (char *)malloc(sizeof(unsigned char *) * 7);
     strcpy(bidule,"Hello ");
 
+
+
     ouvrir_fichier_entree(fileName);
     ouvrir_fichier_sortie(out);
+
     compress(arbre);
 
     fermer_fichiers();
