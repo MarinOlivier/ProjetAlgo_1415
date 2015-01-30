@@ -109,9 +109,9 @@ int main(int argc, const char * argv[])
     //affichage(arbre);
     cout << "Le dernier code : " << showCode() << endl;
 
-    // cout << "Code recherché : 4060 =  \"";
-    // cout << searchCode(4000, arbre);
-    // cout << "\""<< endl;
+    cout << "Code recherché : 4060 =  \"";
+    cout << searchCode('a', arbre);
+    cout << "\""<< endl;
     
     Clock::time_point t1 = Clock::now();
     milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);

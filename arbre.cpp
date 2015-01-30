@@ -97,7 +97,7 @@ ptarbre init_arbre_ASCII(void)
 
 
 // OK 
-unsigned int getCode(unsigned char s[], ptarbre arbre)
+int getCode(unsigned char s[], ptarbre arbre)
 {
 	if (arbre == NULL && arbre->frere == NULL)
 		return -1;
