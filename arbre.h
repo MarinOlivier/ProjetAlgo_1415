@@ -26,10 +26,10 @@ ptarbre creer_arbre();
 ptarbre creer_noeud(unsigned char etiq, int code, ptarbre frere, ptarbre fils, ptarbre pere);
 void ajout(ptarbre arbre, unsigned char s[]);
 ptarbre init_arbre_ASCII(void);
-int getCode(unsigned char s[], ptarbre arbre);
+unsigned int getCode(unsigned char s[], ptarbre arbre);
 void affichage(ptarbre arbre);
 int showCode(void);
-ptarbre searchCode(int code, ptarbre arbre);
-char* getWord(int val, ptarbre arbre);
+unsigned char * searchCode(int code, ptarbre arbre);
+unsigned char* getWord(int val, ptarbre arbre);
 
 #endif

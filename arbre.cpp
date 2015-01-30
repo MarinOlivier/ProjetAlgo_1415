@@ -95,7 +95,9 @@ ptarbre init_arbre_ASCII(void)
 	return racine;
 }
 
-int getCode(unsigned char s[], ptarbre arbre)
+
+// OK 
+unsigned int getCode(unsigned char s[], ptarbre arbre)
 {
 	if (arbre == NULL && arbre->frere == NULL)
 		return -1;
@@ -135,27 +137,69 @@ void affichage(ptarbre arbre)
 	}
 }
 
+unsigned char * addChar(unsigned char * str, unsigned char c){
+	int length = strlen((char*)str);
 
-ptarbre searchCode(int val, ptarbre arbre){
-	if(arbre == NULL)
-		return NULL;
-	if (val == arbre->code)
-		return arbre;
-	searchCode(val, arbre->fils );
-	searchCode(val, arbre->frere);
+	str = (unsigned char *) realloc(str,sizeof(unsigned char) * (length + 2));
+	if (str!= NULL)	{
+		str[length] = c;
+		str[length + 1] = '\0';
+	}
+	return str;
+}
+unsigned char * insertString(unsigned char * str, unsigned char c, int place){
+    
+    int length = strlen((char*)str);
+    str = (unsigned char *) realloc(str,sizeof(unsigned char) * (length + 2));
+    //strcpy((char *)str,(char *)tempC);
+    if (str!= NULL) {
+        for(int i = length +1; i >= 0; i--)
+            if(i > place) str[i] = str[i-1];
+            else str[i] = c;
+    }
+
+    return str;
 }
 
-char* getWord(int val, ptarbre arbre)
-{
-	if (arbre == NULL)
-		return;
-	ptarbre feuille = searchCode(val, arbre); 
-	if (feuille != NULL)
-	{
-		// remonter l'arbre en sauvegardant chaque lettre
+unsigned char * searchCode(int val, ptarbre arbre){
+	if(arbre->code == val){
+		unsigned char * end;
+		unsigned char * tempC = (unsigned char *)malloc (sizeof (unsigned char));
+		tempC[0] = '\0';
+		end = addChar(tempC,arbre->etiq);
+		return end;
+	} else {
+
+		unsigned char * str = NULL;
+		if((arbre->fils) != NULL)
+			str = searchCode(val, arbre->fils);
+
+		if(str == NULL && arbre->frere != NULL)
+			return searchCode(val, arbre->frere);
+
+		if(str != NULL)
+			str = insertString(str, arbre->etiq, 0);
+
+		return str;
 	}
 }
+
+// unsigned char* getWord(int val, ptarbre arbre)
+// {
+// 	if (arbre == NULL)
+// 		return EOF;
+// 	ptarbre feuille = searchCode(val, arbre); 
+// 	if (feuille != NULL) {
+// 		// remonter l'arbre en sauvegardant chaque lettre
+// 	}
+// }
 
 int showCode(void){
 	return codeFinal;
 }
+
+
+
+
+
+
