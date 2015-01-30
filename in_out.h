@@ -11,11 +11,18 @@
 
 #include "arbre.h"
 
+static FILE * output = NULL;
+static FILE * input = NULL;
+
 char reader(char *);
 void writer(int code, const char* foutput);
 void writer_char(char code, const char* foutput);
+void ouvrir_fichier_entree (char * nom_fichier_entree);
+void ouvrir_fichier_sortie (char * nom_fichier_sortie);
+void fermer_fichiers ();
 static void mise_a_un (unsigned char * buffer, int i);
-void ecrire_code_binaire (unsigned int code, const char* foutput, int vider_buffer);
+void ecrire_code_binaire (unsigned int code, int vider_buffer);
+unsigned int lire_code_binaire ();
 
 
 #endif

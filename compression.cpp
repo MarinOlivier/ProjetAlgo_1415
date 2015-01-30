@@ -20,7 +20,7 @@ using namespace std;
 static unsigned char w[10000] = {0};
 //unsigned char * w = (unsigned char *)malloc(10 * sizeof(char));
 
-void compress(const char* finput, const char* foutput, ptarbre arbre)
+void compress(ptarbre arbre)
 {
 // w = Nul;
 //    tant que (lecture d'un caractère c) faire
@@ -33,18 +33,11 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
 //        fin si
 //    fin tant que
 //    écrire le code de w;
-    
-    FILE* entry = NULL;
-    entry = fopen(finput, "r");
+
     unsigned char c;
     int buffer = 0;
-
-    if (entry == NULL) {
-        cout << "Error, can't read file !" << endl;
-        return;
-    }
-
-    buffer = fgetc(entry);
+    
+    buffer = fgetc(input);
     while(buffer != EOF){        
         short i = 0;
 
@@ -63,20 +56,19 @@ void compress(const char* finput, const char* foutput, ptarbre arbre)
             // cout << "ajout de " << w << endl;
             ajout(arbre, w);
 
-            // passade de w+c a w
+            // passage de w+c a w
             w[i] = 0;
 
             int codeToWrite = getCode(w, arbre);
-            // cout << "code de " << w << " : " << codeToWrite << " ecriture." << endl;
-            writer(codeToWrite, foutput);
+
+            ecrire_code_binaire (codeToWrite, 0);
             memset(w, 0, sizeof(w));
             w[0] = c;
         }
-        buffer = fgetc(entry);
+        buffer = fgetc(input);
     }
 
     int codeToWrite = getCode(w, arbre);
-    writer(codeToWrite, foutput);
+    ecrire_code_binaire (codeToWrite, 1);
 
-    fclose(entry);
 }

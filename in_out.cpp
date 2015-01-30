@@ -61,6 +61,47 @@ void writer_char(char code, const char* foutput){
 }
 
 
+/** @brief Ouvre le fichier d'entree.
+ *
+ * Initialise la variable globale fichier_entree par un descripteur sur 
+ * le fichier d'entree (lecture seule).
+ * @param nom_fichier_entree  Chaine de caracteres du nom du fichier d'entree.
+ * @param binaire  Booleen contenant si le fichier doit etre ouvert en binaire.
+ * @return  void
+ */
+void ouvrir_fichier_entree (char * nom_fichier_entree) 
+{
+   input = fopen (nom_fichier_entree, "r");
+}
+
+/** @brief Ouvre le fichier d'entree.
+ *
+ * Initialise la variable globale fichier_entree par un descripteur sur 
+ * le fichier d'entree (lecture seule).
+ * @param nom_fichier_entree  Chaine de caracteres du nom du fichier d'entree.
+ * @param binaire  Booleen contenant si le fichier doit etre ouvert en binaire.
+ * @return  void
+ */
+void ouvrir_fichier_sortie (char * nom_fichier_sortie)
+ {
+    output = fopen (nom_fichier_sortie, "a+");
+}
+
+/** @brief Ferme les descripteurs sur les fichiers de lecture et d'ecriture.
+ * @param void
+ * @return  void
+ */
+void fermer_fichiers ()
+{
+    fclose (input);
+    fclose (output);
+}
+
+/** @brief Met à 1 le ieme bit du buffer
+ * @param buffer  Tableau de bits.
+ * @param i  Position du bit a mettre a un.
+ * @return  void
+ */
 static void mise_a_un (unsigned char * buffer, int i) {
     unsigned char un = 1;
     un = un << i;
@@ -68,17 +109,8 @@ static void mise_a_un (unsigned char * buffer, int i) {
 }
 
 
-void ecrire_code_binaire (unsigned int code, const char* foutput, int vider_buffer) 
+void ecrire_code_binaire (unsigned int code, int vider_buffer) 
 {
-    FILE* output = NULL;
-    output = fopen(foutput, "a+");
-    
-    if (output == NULL)
-    {
-        cout << "Error : can not open file !" << endl;
-        return;
-    }
-
  
     static unsigned char buffer = 0; /* Debut d'ecriture dans le buffer à gauche */
     static int indice_buffer = 7;
@@ -110,17 +142,8 @@ void ecrire_code_binaire (unsigned int code, const char* foutput, int vider_buff
     }
 }
 
-unsigned int lire_code_binaire (const char* finput) 
+unsigned int lire_code_binaire () 
 {
-    FILE* input = NULL;
-    input = fopen(foutput, "a+");
-    
-    if (input == NULL)
-    {
-        cout << "Error : can not open file !" << endl;
-        return;
-    }
-
     static unsigned char buffer = 0; /* Debut d'ecriture dans le buffer à droite */
     static unsigned int indice_buffer = 0;
     unsigned int code;
