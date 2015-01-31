@@ -1,10 +1,27 @@
-//
-//  in_out.cpp
-//  pa1415
-//
-//  Created by Alex on 02/12/2014.
-//  Copyright (c) 2014 Alex et Olivier. All rights reserved.
-//
+/**
+ *
+ * Polytech Marseille
+ * Case 925 - 163, avenue de Luminy
+ * 13288 Marseille CEDEX 9
+ *
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut etre
+ * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
+ * Copyright (c) 2014 Alex&Olivier. All rights reserved.
+ */
+
+/**
+ * @author LAGRANGE CETTO Alexandre <>
+ * @author MARIN Olivier <olivier.marin@etu.univ-amu.fr>
+ *
+ * @todo
+ */
+
+/**
+ * @file in_out.cpp
+ * @brief Module gerant la lecture / ecriture dans des fichiers externes
+ * 
+ */
+
 #include <iostream>
 #include <stdio.h>
 #include "string.h"

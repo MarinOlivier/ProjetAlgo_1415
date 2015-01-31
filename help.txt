@@ -4,7 +4,7 @@ Le programme peut être lancé en ligne de commande ou peut être utilisé grâc
 
 ./lzw lance le programme avec son menu
 
-./lzw [cdh] [fichier1] [fichier2]
+./lzw [-cdh] [fichier1] [fichier2]
 
 Options :
 	-h affiche ce fichier d'aide

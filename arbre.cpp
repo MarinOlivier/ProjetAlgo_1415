@@ -1,10 +1,26 @@
-//
-//  arbre.cpp
-//  projet_algo
-//
-//  Created by Olivier on 11/11/2014.
-//  Copyright (c) 2014 Alex&Olivier. All rights reserved.
-//
+/**
+ *
+ * Polytech Marseille
+ * Case 925 - 163, avenue de Luminy
+ * 13288 Marseille CEDEX 9
+ *
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut etre
+ * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
+ * Copyright (c) 2014 Alex&Olivier. All rights reserved.
+ */
+
+/**
+ * @author LAGRANGE CETTO Alexandre <>
+ * @author MARIN Olivier <olivier.marin@etu.univ-amu.fr>
+ *
+ * @todo
+ */
+
+/**
+ * @file arbre.cpp
+ * @brief Module de gestion de l'arbre
+ * 
+ */
 
 #include <iostream>
 #include <stdlib.h>

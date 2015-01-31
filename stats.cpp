@@ -1,14 +1,31 @@
-//
-//  stats.cpp
-//  projet_algo
-//
-//  Created by Olivier on 15/12/2014.
-//  Copyright (c) 2014 Alex&Olivier. All rights reserved.
-//
+/**
+ *
+ * Polytech Marseille
+ * Case 925 - 163, avenue de Luminy
+ * 13288 Marseille CEDEX 9
+ *
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut etre
+ * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
+ * Copyright (c) 2014 Alex&Olivier. All rights reserved.
+ */
+
+/**
+ * @author LAGRANGE CETTO Alexandre <>
+ * @author MARIN Olivier <olivier.marin@etu.univ-amu.fr>
+ *
+ * @todo
+ */
+
+/**
+ * @file stats.cpp
+ * @brief Module calculant le taux de compression
+ * 
+ */
 
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -41,5 +58,6 @@ void compareSize(const char * before, const char * after){
     double fileSize1 = fileSize(before);
     double fileSize2 = fileSize(after);
     cout << "Fichier à compresser : "<< fileSize1 << ", Fichier compressé : " << fileSize2 << endl;
-    cout << fileSize1/(fileSize2-fileSize1) * 100 << "% de compression"<< endl;
+    cout << setprecision (4);
+    cout << (fileSize2/fileSize1) * 100 << "% de compression"<< endl;
 }

@@ -1,10 +1,36 @@
-//
-//  main.cpp
-//  projet_algo
-//
-//  Created by Olivier on 11/11/2014.
-//  Copyright (c) 2014 Alex&Olivier. All rights reserved.
-//
+/**
+ *
+ * Polytech Marseille
+ * Case 925 - 163, avenue de Luminy
+ * 13288 Marseille CEDEX 9
+ *
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut etre
+ * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
+ * Copyright (c) 2014 Alex&Olivier. All rights reserved.
+ */
+
+/**
+ * @author LAGRANGE CETTO Alexandre <>
+ * @author MARIN Olivier <olivier.marin@etu.univ-amu.fr>
+ *
+ * @todo
+ */
+
+/**
+ * @file main.cpp
+ * @brief Module principal
+ * 
+ * Programme permettant la compression et la decompression d'un fichier.
+ * Le programme de compression lit le fichier texte donne en entree et ecrit les 
+ * code de compression au format binaire dans le fichier de sortie.
+ * Le programme de decompression lit le fichier binaire donne en entree et 
+ * decompression dans le fichier texte de sortie.
+ */
+
+/**
+ * Ces codes ont etaient redigee dans le cadre du Projet d'algorithmique de 
+ * 3eme annee du cycle d'ingenieur de l'ecole Polytech Marseille.
+ */
 
 #include <iostream>
 #include <stdio.h>
@@ -67,21 +93,23 @@ void menu(int n){
                 cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
                 cin >> c;
                 if (c == 'O' || c == 'o'){
+                    cout << "COMPRESS" << endl;
                     ouvrir_fichier_entree(fileName);
                     ouvrir_fichier_sortie(out);
                     compress(arbre);
                     fermer_fichiers();
-                    cout << "COMPRESS" << endl;
+                    compareSize(fileName, out);
                 } else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
             } else {
+                cout << "COMPRESS" << endl;
                 ouvrir_fichier_entree(fileName);
                 ouvrir_fichier_sortie(out);
                 compress(arbre);
                 fermer_fichiers();
-                cout << "COMPRESS" << endl;
+                compareSize(fileName, out);
             }
             break;
 
@@ -103,23 +131,23 @@ void menu(int n){
                 cin >> c;
                 if (c == 'O' || c == 'o')
                 {
+                    cout << "DECOMPRESS" << endl;
                     ouvrir_fichier_entree(fileName);
                     ouvrir_fichier_sortie(out);
                     decompress(arbre);
                     fermer_fichiers();
 
-                    cout << "DECOMPRESS" << endl;
                 }
                 else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
             } else {
+                cout << "DECOMPRESS" << endl;
                 ouvrir_fichier_entree(fileName);
                 ouvrir_fichier_sortie(out);
                 decompress(arbre);
                 fermer_fichiers();
-                cout << "DECOMPRESS" << endl;
             }
             break;
 
@@ -158,21 +186,25 @@ int main(int argc, char * argv[])
                         cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour arrêter le programme" << endl;
                         cin >> c;
                         if (c == 'O' || c == 'o'){
+                            cout << "COMPRESS" << endl;
                             ouvrir_fichier_entree(argv[2]);
                             ouvrir_fichier_sortie(argv[3]);
                             compress(arbre);
                             fermer_fichiers();
-                            cout << "COMPRESS" << endl;
+
+                            compareSize(argv[2], argv[3]);
                         } else break;    
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;
                         break;
                     } else {
+                        cout << "COMPRESS" << endl;
                         ouvrir_fichier_entree(argv[2]);
                         ouvrir_fichier_sortie(argv[3]);
                         compress(arbre);
                         fermer_fichiers();
-                        cout << "COMPRESS" << endl;
+
+                        compareSize(argv[2], argv[3]);
                     }
                     break;
                 case 'd':
@@ -186,22 +218,22 @@ int main(int argc, char * argv[])
                         cin >> c;
                         if (c == 'O' || c == 'o')
                         {
+                            cout << "DECOMPRESS" << endl;
                             ouvrir_fichier_entree(argv[2]);
                             ouvrir_fichier_sortie(argv[3]);
                             decompress(arbre);
                             fermer_fichiers();
-                            cout << "DECOMPRESS" << endl;
                         }
                         else break;    
                     } else if(argv[2][0] == '\0'){
                         cout << "Nom de fichier invalide" << endl;
                         break;
                     } else {
+                        cout << "DECOMPRESS" << endl;
                         ouvrir_fichier_entree(argv[2]);
                         ouvrir_fichier_sortie(argv[3]);
                         decompress(arbre);
                         fermer_fichiers();
-                        cout << "DECOMPRESS" << endl;
                     }
                     break;
                 case 'h':
