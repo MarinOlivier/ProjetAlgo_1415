@@ -26,6 +26,8 @@ static void mise_a_un (unsigned char * buffer, int i);
 int lire_caractere ();
 void ecrire_code_binaire (unsigned int code, int vider_buffer);
 unsigned int lire_code_binaire ();
+int show_NB_BITS_CODE(void);
+void change_NB_BITS_CODE(void);
 
 
 #endif

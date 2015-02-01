@@ -30,7 +30,7 @@
 
 using namespace std;
 
-#define NB_BITS_CODE 14
+static int NB_BITS_CODE = 10; // marche a partir de 13
 
 
 char reader(char * uncomp_file){
@@ -223,4 +223,14 @@ unsigned int lire_code_binaire ()
     }
     
     return code;
+}
+
+int show_NB_BITS_CODE(void)
+{
+    return NB_BITS_CODE;
+}
+
+void change_NB_BITS_CODE(void)
+{
+    NB_BITS_CODE = NB_BITS_CODE + 1;
 }

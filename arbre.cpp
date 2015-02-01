@@ -29,7 +29,7 @@
 
 using namespace std;
 
-int codeFinal = 0;
+static int codeFinal = 0;
 
 ptarbre creer_arbre()
 {
@@ -69,9 +69,9 @@ void ajout(ptarbre arbre, unsigned char c[])
 
 		codeFinal++;
 		//cout << "CF ++ " << endl;
-		if (codeFinal == 256) {
-			codeFinal = 260;
-		}
+		// if (codeFinal == 256) {
+		// 	codeFinal = 260;
+		// }
 		
 	}
 	else if ((int)arbre->frere->etiq > (int)c[0])
@@ -84,9 +84,9 @@ void ajout(ptarbre arbre, unsigned char c[])
 		
 		codeFinal++;
 		//cout << "CF bis ++ " << endl;
-		if (codeFinal == 256) {
-			codeFinal = 260;
-		}
+		// if (codeFinal == 256) {
+		// 	codeFinal = 260;
+		// }
 	}
 	else
 		cout << "Error : Aucune condition." << endl;

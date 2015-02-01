@@ -25,6 +25,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <math.h>
 
 #include "decompression.h"
 #include "arbre.h"
@@ -49,6 +50,14 @@ static unsigned char * w;
 
 void decompress(ptarbre arbre)
 {
+
+    cout << "code final : " << showCode() << endl;
+    cout << "nb bits code : " << show_NB_BITS_CODE() << endl;
+    if (showCode() == pow(2, show_NB_BITS_CODE()))
+    {
+        change_NB_BITS_CODE();
+    }
+    
     unsigned char * mot_precedent = NULL;
     int code_lu;
     
@@ -79,6 +88,13 @@ void decompress(ptarbre arbre)
         free (mot_precedent);
         
         mot_precedent = mot_decode;
+
+        cout << "code final : " << showCode() << endl;
+        cout << "nb bits code : " << show_NB_BITS_CODE() << endl;
+        if (showCode() == pow(2, show_NB_BITS_CODE()))
+        {
+            change_NB_BITS_CODE();
+        }
     }
     
     free (mot_precedent);
