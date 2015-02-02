@@ -30,7 +30,7 @@
 
 using namespace std;
 
-static int NB_BITS_CODE = 10; // marche a partir de 13
+static int NB_BITS_CODE = 13; // marche a partir de 13
 
 
 char reader(char * uncomp_file){

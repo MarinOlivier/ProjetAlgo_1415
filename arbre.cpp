@@ -31,6 +31,12 @@ using namespace std;
 
 static int codeFinal = 0;
 
+void setCodeFinal(int val)
+{
+	codeFinal = val;
+	return;
+}
+
 ptarbre creer_arbre()
 {
 	ptarbre arbre = (ptarbre)malloc(sizeof(noeud));
@@ -228,7 +234,16 @@ int showCode(void){
 }
 
 
-
-
-
-
+void freeArbre(ptarbre arbre)
+{
+    if (arbre == NULL)
+        return;
+    else
+    {
+        ptarbre arbre_fils = arbre->fils;
+        ptarbre arbre_frere = arbre->frere;
+        free(arbre);
+        freeArbre(arbre_fils);
+        freeArbre(arbre_frere);
+    }
+}

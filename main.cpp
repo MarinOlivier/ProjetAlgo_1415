@@ -55,6 +55,7 @@ void testRecherche(ptarbre arbre){
 	cout << getCode(mot, arbre) << endl;
 }
 
+
 void menu(int n){
     char c;
     ptarbre arbre = init_arbre_ASCII();
@@ -66,7 +67,8 @@ void menu(int n){
     //reader(fN);
     if(!n){
         cout << "\033[2J\033[1;1H";
-        cout << endl;
+        reader(fN);
+        cout << endl << endl << endl << endl;
         cout << "Choisissez la tâche à effectuer : "<< endl;
         cout << "1. Compresser un fichier" << endl;
         cout << "2. Décompresser un fichier" << endl;
@@ -99,7 +101,8 @@ void menu(int n){
                     compress(arbre);
                     fermer_fichiers();
                     compareSize(fileName, out);
-                } else return menu(1);    
+                } 
+                else return menu(1);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
@@ -120,7 +123,7 @@ void menu(int n){
             cout << endl;
             if((fileName[0] == '\0') || !fichier_existe(fileName)){
                 cout << "Le fichier n'existe pas, retour au début" << endl;
-                return menu(1);
+                return menu(2);
             }
 
             cout << "Entrez le nom du fichier de sortie : ";
@@ -138,7 +141,7 @@ void menu(int n){
                     fermer_fichiers();
 
                 }
-                else return menu(1);    
+                else return menu(2);    
             } else if(fileName[0] == '\0'){
                 cout << "Nom de fichier invalide" << endl;
                 return menu(1);
@@ -154,6 +157,15 @@ void menu(int n){
         default:
             menu(0);
     }
+
+    cout << "free arbre " << endl;
+    freeArbre(arbre);
+    setCodeFinal(0);
+    cout << "Press [Enter] to continue...";
+    getchar();
+    getchar();
+
+    menu(0);
 }
 
 int main(int argc, char * argv[])
@@ -248,6 +260,5 @@ int main(int argc, char * argv[])
     }
 
     
-
     return 0;
 }
