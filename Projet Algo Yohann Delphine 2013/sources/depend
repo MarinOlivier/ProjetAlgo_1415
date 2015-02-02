@@ -1,0 +1,9 @@
+chaine_caracteres.o: chaine_caracteres.c chaine_caracteres.h
+compression.o: compression.c chaine_caracteres.h dictionnaire.h \
+  lecture_ecriture.h compression.h
+decompression.o: decompression.c chaine_caracteres.h dictionnaire.h \
+  lecture_ecriture.h decompression.h
+dictionnaire.o: dictionnaire.c chaine_caracteres.h dictionnaire.h
+lecture_ecriture.o: lecture_ecriture.c dictionnaire.h lecture_ecriture.h
+main.o: main.c dictionnaire.h lecture_ecriture.h compression.h \
+  decompression.h
