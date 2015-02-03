@@ -156,7 +156,6 @@ void menu(int n){
             menu(0);
     }
 
-    cout << "free arbre " << endl;
     freeArbre(arbre);
     setCodeFinal(0);
     cout << "Press [Enter] to continue...";

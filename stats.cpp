@@ -57,7 +57,13 @@ double fileSize(const char * fileName){
 void compareSize(const char * before, const char * after){
     double fileSize1 = fileSize(before);
     double fileSize2 = fileSize(after);
-    cout << "Fichier à compresser : "<< fileSize1 << ", Fichier compressé : " << fileSize2 << endl;
+
+    cout << "---------------------------- STATS ----------------------------" << endl;
+    cout << "|    Fichier à compresser    |    " << fileSize1 << " octets, soit : " << setprecision(2) << fileSize1/1024 << "Ko."<< endl;
+    cout << setprecision(6);
+    cout << "|    Fichier compressé       |    " << fileSize2 << " octets, soit : " << setprecision(2) << fileSize2/1024 << "Ko." << endl;
     cout << setprecision (4);
-    cout << (fileSize2/fileSize1) * 100 << "% de compression"<< endl;
+    cout << "|    Taux de compression     |    " << (fileSize2/fileSize1) * 100 << "%"<< endl;
+    cout << "---------------------------------------------------------------" << endl;
+    cout << endl;
 }
