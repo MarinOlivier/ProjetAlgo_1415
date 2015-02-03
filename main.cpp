@@ -63,11 +63,11 @@ void menu(int n){
     char fileName[40] = {'\0'};
     char out[40] = {'\0'};
     // Affichage du menu :
-    char fN[] = "reader.txt";
+    char LZW[] = "reader.txt";
     //reader(fN);
     if(!n){
         cout << "\033[2J\033[1;1H";
-        reader(fN);
+        reader(LZW);
         cout << endl << endl << endl << endl;
         cout << "Choisissez la tâche à effectuer : "<< endl;
         cout << "1. Compresser un fichier" << endl;
@@ -120,7 +120,6 @@ void menu(int n){
             cout << "\033[2J\033[1;1H";
             cout << "Entrez le nom du fichier à décompresser : ";
             cin >> fileName;
-            cout << endl;
             if((fileName[0] == '\0') || !fichier_existe(fileName)){
                 cout << "Le fichier n'existe pas, retour au début" << endl;
                 return menu(2);
@@ -128,7 +127,6 @@ void menu(int n){
 
             cout << "Entrez le nom du fichier de sortie : ";
             cin >> out;
-            cout << endl;
             if((out[0] != '\0') && fichier_existe(out)){
                 cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
                 cin >> c;
