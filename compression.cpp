@@ -72,19 +72,6 @@ void compress(ptarbre arbre)
             w[i] = c; 
         }
         else {
-            // if (showCode() == pow(2, show_NB_BITS_CODE()))
-            // { 
-            //     change_NB_BITS_CODE();
-            //     ajout(arbre, w);
-            //     // passage de w+c a w
-            //     w[i] = 0;
-
-            //     int codeToWrite = getCode(w, arbre);
-            //     ecrire_code_binaire (codeToWrite, 1);
-            //     memset(w, 0, sizeof(w));
-            //     w[0] = c;
-            // } else {
-
                 ajout(arbre, w);
                 // passage de w+c a w
                 w[i] = 0;
@@ -93,7 +80,6 @@ void compress(ptarbre arbre)
                 ecrire_code_binaire (codeToWrite, 0);
                 memset(w, 0, sizeof(w));
                 w[0] = c;
-            // }
         }
         buffer = lire_caractere ();
     }

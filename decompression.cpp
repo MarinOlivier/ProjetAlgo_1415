@@ -49,14 +49,6 @@ static unsigned char * w;
 
 void decompress(ptarbre arbre)
 {
-    cout << "dans decomp" << endl;
-
-    affichage(arbre);
-
-    // if (showCode() == pow(2, show_NB_BITS_CODE()))
-    // {
-    //     change_NB_BITS_CODE();
-    // }
     
     unsigned char * mot_precedent = NULL;
     int code_lu;
@@ -64,9 +56,6 @@ void decompress(ptarbre arbre)
     code_lu = lire_code_binaire();
     mot_precedent = searchCode(code_lu, arbre);
     writer_char(mot_precedent);
-
-    cout << "code lu " << code_lu << endl;
-    cout << "mot " << mot_precedent << endl;
     
     while ((code_lu = lire_code_binaire()) != 0) {
 
@@ -91,11 +80,6 @@ void decompress(ptarbre arbre)
         free (mot_precedent);
         
         mot_precedent = mot_decode;
-
-        // if (showCode() == pow(2, show_NB_BITS_CODE()))
-        // {
-        //     change_NB_BITS_CODE();
-        // }
     }
     
     free (mot_precedent);
