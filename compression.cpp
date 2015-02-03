@@ -31,6 +31,7 @@
 #include "compression.h"
 #include "arbre.h"
 #include "in_out.h"
+#include "stats.h"
 
 using namespace std;
 
@@ -52,13 +53,15 @@ void compress(ptarbre arbre)
 {
     unsigned char c;
     int buffer = 0;
+    long j = 0;
     typedef std::chrono::high_resolution_clock Clock;
     typedef std::chrono::milliseconds milliseconds;
     Clock::time_point t0 = Clock::now();
 
     buffer = lire_caractere ();
 
-    while(buffer != EOF){     
+    while(buffer != EOF){ 
+        loadBar(++j);    
         short i = 0;
 
         c = buffer;

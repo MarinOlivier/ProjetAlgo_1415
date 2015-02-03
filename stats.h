@@ -10,7 +10,9 @@
 #ifndef projet_algo_stats_h
 #define projet_algo_stats_h
 
-double fileSize(const char *);
+long fileSize(const char *);
 void compareSize(const char * file1, const char * file2);
+void loadBar(long position);
+void setEntryFileSize(long val);
 
 #endif

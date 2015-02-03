@@ -138,9 +138,9 @@ static void mise_a_un (unsigned char * buffer, int i)
  * @param void
  * @return  Retourne le caractere lu sous forme d'un entier
  */
-int lire_caractere () 
+unsigned int lire_caractere () 
 {
-    int caractere_lu;
+    unsigned int caractere_lu;
     caractere_lu = fgetc (input);
 
     return caractere_lu;

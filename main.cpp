@@ -89,6 +89,7 @@ void menu(int n){
                 return menu(1);
             }
 
+            setEntryFileSize(fileSize(fileName));
             cout << "Entrez le nom du fichier de sortie : ";
             cin >> out;
             if((out[0] != '\0') && fichier_existe(out)){

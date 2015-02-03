@@ -29,11 +29,13 @@
 
 using namespace std;
 
+static long entry_fileSize = 0;
+
 
 // Fonctions de statistiques
 
 // Calcul la taille du fichier passer en paramètre
-double fileSize(const char * fileName){
+long fileSize(const char * fileName){
     FILE * pFile;
     long lSize;
     //char * buffer;
@@ -55,15 +57,27 @@ double fileSize(const char * fileName){
 
 //Compare la taille des fichiers et renvoie le pourcentage de compression
 void compareSize(const char * before, const char * after){
-    double fileSize1 = fileSize(before);
-    double fileSize2 = fileSize(after);
+    long fileSize1 = fileSize(before);
+    long fileSize2 = fileSize(after);
 
     cout << "---------------------------- STATS ----------------------------" << endl;
-    cout << "|    Fichier à compresser    |    " << fileSize1 << " octets, soit : " << setprecision(2) << fileSize1/1024 << "Ko."<< endl;
-    cout << setprecision(6);
-    cout << "|    Fichier compressé       |    " << fileSize2 << " octets, soit : " << setprecision(2) << fileSize2/1024 << "Ko." << endl;
+    cout << "|    Fichier à compresser    |    " << fileSize1 << " octets, soit : " << fileSize1/1024 << " Ko."<< endl;
+    cout << "|    Fichier compressé       |    " << fileSize2 << " octets, soit : " << fileSize2/1024 << " Ko." << endl;
     cout << setprecision (4);
-    cout << "|    Taux de compression     |    " << (fileSize2/fileSize1) * 100 << "%"<< endl;
+    cout << "|    Taux de compression     |    " << ((float)fileSize2/(float)fileSize1) * 100 << "%"<< endl;
     cout << "---------------------------------------------------------------" << endl;
     cout << endl;
+}
+
+void setEntryFileSize(long val)
+{
+    entry_fileSize = val;
+}
+
+void loadBar(long position)
+{
+    long nb_octet = entry_fileSize/8;
+    long pourcentage  = nb_octet/20;
+    if (!(position%(long)pourcentage))
+        cout << "=";
 }
