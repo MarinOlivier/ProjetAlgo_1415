@@ -47,8 +47,6 @@ using namespace std;
 
 void decompress(ptarbre arbre)
 {
-    cout << "dans decomp " << endl;
-    cout << "codeFinal : " << showCode() << " nb bits code : " << show_NB_BITS_CODE() << endl;
     if (showCode() == pow(2, show_NB_BITS_CODE()))
     {
         change_NB_BITS_CODE();
@@ -59,14 +57,10 @@ void decompress(ptarbre arbre)
     
     code_lu = lire_code_binaire();
 
-    cout << "code_lu " << code_lu << endl;
     mot_precedent = searchCode(code_lu, arbre);
     writer_char(mot_precedent);
     
     while ((code_lu = lire_code_binaire()) != 0) {
-        cout << "lecture sur : " << show_NB_BITS_CODE() << endl;
-
-        cout << "code_lu " << code_lu << endl;
 
         unsigned char * mot_decode                  = NULL;
         unsigned char * mot_precedent_et_mot_decode = NULL;
@@ -76,7 +70,6 @@ void decompress(ptarbre arbre)
             mot_decode = copier_chaine(mot_precedent);
             mot_decode = addChar(mot_decode, mot_precedent[0]);
         }
-        cout << "mot : " << mot_decode << endl;
         writer_char(mot_decode);
         
         free(mot_precedent_et_mot_decode);
