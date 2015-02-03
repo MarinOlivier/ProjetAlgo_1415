@@ -94,7 +94,7 @@ void menu(int n){
             if((out[0] != '\0') && fichier_existe(out)){
                 cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
                 cin >> c;
-                if (c == 'O' || c == 'o'){
+                if (c == 'O' || c == 'o'){
                     cout << "COMPRESS" << endl;
                     ouvrir_fichier_entree(fileName);
                     ouvrir_fichier_sortie(out);
@@ -130,7 +130,7 @@ void menu(int n){
             if((out[0] != '\0') && fichier_existe(out)){
                 cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour retourner au début" << endl;
                 cin >> c;
-                if (c == 'O' || c == 'o')
+                if (c == 'O' || c == 'o')
                 {
                     cout << "DECOMPRESS" << endl;
                     ouvrir_fichier_entree(fileName);
@@ -195,7 +195,7 @@ int main(int argc, char * argv[])
                     if((argv[3][0] != '\0') && fichier_existe(argv[3])){
                         cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour arrêter le programme" << endl;
                         cin >> c;
-                        if (c == 'O' || c == 'o'){
+                        if (c == 'O' || c == 'o'){
                             cout << "COMPRESS" << endl;
                             ouvrir_fichier_entree(argv[2]);
                             ouvrir_fichier_sortie(argv[3]);
@@ -226,7 +226,7 @@ int main(int argc, char * argv[])
                     if((argv[3][0] != '\0') && fichier_existe(argv[3])){
                         cout << "Le fichier existe déjà, O pour l'utiliser quand même, N pour arrêter le programme" << endl;
                         cin >> c;
-                        if (c == 'O' || c == 'o')
+                        if (c == 'O' || c == 'o')
                         {
                             cout << "DECOMPRESS" << endl;
                             ouvrir_fichier_entree(argv[2]);

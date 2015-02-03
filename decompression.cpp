@@ -92,6 +92,4 @@ void decompress(ptarbre arbre)
     
     free (mot_precedent);
 
-    cout << "fin decomp" << endl;
-
 }

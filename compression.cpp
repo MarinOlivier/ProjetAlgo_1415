@@ -26,6 +26,7 @@
 #include <stdio.h> // gestion de fichiers
 #include <math.h>
 #include "string.h"
+#include <chrono>
 
 #include "compression.h"
 #include "arbre.h"
