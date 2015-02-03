@@ -158,6 +158,7 @@ void menu(int n){
 
     freeArbre(arbre);
     setCodeFinal(0);
+    restaure_NB_BITS_CODE();
     cout << "Press [Enter] to continue...";
     getchar();
     getchar();

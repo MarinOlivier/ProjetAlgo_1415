@@ -28,7 +28,7 @@ void ecrire_code_binaire (unsigned int code, int vider_buffer);
 unsigned int lire_code_binaire ();
 int show_NB_BITS_CODE(void);
 void change_NB_BITS_CODE(void);
-void mypause (void);
+void restaure_NB_BITS_CODE(void);
 
 
 #endif

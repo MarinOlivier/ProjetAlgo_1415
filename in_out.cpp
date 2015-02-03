@@ -30,7 +30,8 @@
 
 using namespace std;
 
-static int NB_BITS_CODE = 13; // marche a partir de 13
+static int NB_BITS_CODE = 10; // marche a partir de 13
+static int initial_NB_BITS_CODE = NB_BITS_CODE;
 
 
 char reader(char * uncomp_file){
@@ -233,4 +234,9 @@ int show_NB_BITS_CODE(void)
 void change_NB_BITS_CODE(void)
 {
     NB_BITS_CODE = NB_BITS_CODE + 1;
+}
+
+void restaure_NB_BITS_CODE(void)
+{
+    NB_BITS_CODE = initial_NB_BITS_CODE;
 }
